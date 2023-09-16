@@ -5,8 +5,8 @@ import json
 # port number for test server
 PORT = 80
 
-class RequestHandler(BaseHTTPRequestHandler):
 
+class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
             if self.path == "/":
