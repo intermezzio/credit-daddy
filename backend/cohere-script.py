@@ -1,6 +1,18 @@
 import requests
 from dotenv import load_dotenv
 import os
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+import json
+
+
+# Initialize Firebase
+cred = credentials.Certificate("firebase-sdk-admin.json")
+firebase_admin.initialize_app(cred)
+
+# Initialize Firestore Database
+db = firestore.client()
 
 # env variables
 load_dotenv()
@@ -9,7 +21,7 @@ api_key = os.getenv('FIREBASE_API_KEY')
 
 chat_history = []
 
-#---------------------------------------------#
+# --------------------------------------------- #
 
 url = "https://api.cohere.ai/v1/chat"
 
@@ -35,11 +47,18 @@ headers = {
 response = requests.post(url, json=payload, headers=headers)
 response_data = response.json() 
 
-user_question = {"user_name": "User", "text": "Please list out the company name (str), card type (str, Visa, Mastercard), Avg APR (float), Min Cashback (float), Max Cashback (float), Foreign Transaction Fee (float), Sign on Offer (bool), Offer details (str), Description (str, 2 sentences max), Annual Fee (float), Overcharge fee (float). Only list out one card list in JSON format. If you don't have data just put 'N/A'."}
+user_question = {"user_name": "User", "text": "Please list out the company name (str), card type (str, Visa, Mastercard), Avg APR (float), Min Cashback (float), Max Cashback (float), Foreign Transaction Fee (float), Sign on Offer (bool), Offer details (str), Description (str, 2 sentences max), Annual Fee (float), Overcharge fee (float). Only list out one card list in JSON format starting with {. If you don't have data just put 'N/A'."}
 bot_answer_text = response_data.get('text', 'Key not found')
-bot_answer = {"user_name": "Bot", "text": bot_answer_text}
 
-chat_history.append(user_question)
-chat_history.append(bot_answer)
+# remove delimiters
+bot_answer_text = bot_answer_text.replace("```json", "").replace("```", "").strip()
+
+print(bot_answer_text)
+
+# convert bot_answer_text to JSON
+bot_answer_json = json.loads(bot_answer_text)
+
+# add to firebase firestore
+doc_ref = db.collection("cards").add(bot_answer_json)
 
 print(bot_answer_text)
