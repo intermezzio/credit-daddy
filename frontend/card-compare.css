@@ -1,6 +1,7 @@
 .filter-section {
     padding: 100px 120px;
     padding-bottom: 20px;
+    display: flex;
 }
 
 .filter-button {
@@ -13,4 +14,39 @@
     border: none;
     background-color: #064D49;
     color: #FFF3DC;
+}
+
+.filter-options{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+}
+
+.filter-option {
+    height: 100%;
+    padding: 12px 20px;
+    border: 2px solid #064D49;
+    color: #064D49;
+    border-radius: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.filter-option.clicked{
+    background-color: #ffd27f;
+}
+
+.table{
+    width: 100vw;
+    overflow: scroll;
+    padding: 100px 120px;
+    padding-right: calc(120px - 41px);
+}
+
+.table-header > td{
+    padding-right: 41px;
+}
+
+.section-title-td{
+    display: flex;
 }
