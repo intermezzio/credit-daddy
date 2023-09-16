@@ -1,2 +1,2 @@
-worker: python backend/api.py
-web: python backend/api.py
+worker: cd backend && gunicorn api:app
+web: cd backend && gunicorn api:app
