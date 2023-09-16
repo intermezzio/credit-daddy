@@ -1,212 +1,97 @@
-.frame {
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-family: "Sora", sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: #FFF3DC;
+}
+
+.bg {
+    opacity: 0.34;
+    filter: blur(100px);
+}
+
+.nav {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(100px);
     display: flex;
-    align-items: flex-start;
+    padding: 8px 120px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.nav.dark {
+    background-color: #064D49;
+    color: #FFF3DC;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 41px;
-    padding: 60px 120px 100px;
-    position: relative;
-  }
-  
-  .frame .div {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 41px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .overlap-group-wrapper {
-    position: relative;
-    width: 405px;
-    height: 255px;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  
-  .frame .overlap-group {
-    position: relative;
-    height: 255px;
-  }
-  
-  .frame .vector {
-    width: 352px;
-    left: 0;
-    position: absolute;
-    height: 255px;
-    top: 0;
-  }
-  
-  .frame .img {
-    width: 296px;
-    left: 110px;
-    position: absolute;
-    height: 255px;
-    top: 0;
-  }
-  
-  .frame .image {
-    position: absolute;
-    width: 405px;
-    height: 255px;
-    top: 0;
-    left: 0;
-    mix-blend-mode: multiply;
-  }
-  
-  .frame .image-2 {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 108px;
-    left: 24px;
-    object-fit: cover;
-  }
-  
-  .frame .text-wrapper {
-    position: absolute;
-    top: 26px;
-    left: 24px;
-    font-family: "Sora", Helvetica;
+    gap: 2.5rem;
+    align-self: stretch;
+}
+
+.nav-items>a {
+    color: #064D49;
+    font-family: "Sora", sans-serif;
+    font-size: 1.125rem;
+    font-style: normal;
     font-weight: 400;
-    color: #000000;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.nav.dark>.nav-items>a {
+    color: #FFF3DC;
+}
+
+.nav-items>a:hover {
+    border: 1px solid #064D49;
+}
+
+
+.nav.dark>.nav-items>a:hover {
+    border: 1px solid #FFF3DC;
+}
+
+h2.section-title {
+    color: #000;
+    font-family: "Lora", serif;
+    font-size: 2.5625rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+footer {
+    display: flex;
+    padding: 1.625rem 13.125rem;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: #064D49;
+    color: #FFF3DC;
+    font-family: "Sora", sans-serif;
     font-size: 16px;
-    letter-spacing: 0;
-    line-height: 15.7px;
-    white-space: nowrap;
-  }
-  
-  .frame .text-wrapper-2 {
-    position: absolute;
-    top: 53px;
-    left: 24px;
-    font-family: "Sora", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: 19.6px;
-    white-space: nowrap;
-  }
-  
-  .frame .subtract {
-    position: absolute;
-    width: 19px;
-    height: 31px;
-    top: 113px;
-    left: 360px;
-  }
-  
-  .frame .div-2 {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    position: absolute;
-    top: 226px;
-    left: 14px;
-  }
-  
-  .frame .div-3 {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 0px 8px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .ellipse {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    background-color: #000000;
-    border-radius: 4px;
-  }
-  
-  .frame .text-wrapper-3 {
-    position: relative;
-    width: fit-content;
-    font-family: "Lora-Bold", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 41px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-wrapper {
-    position: relative;
-    width: 414px;
-    height: 585px;
-    background-color: #ffffff;
-  }
-  
-  .frame .text-wrapper-4 {
-    position: absolute;
-    top: 266px;
-    left: 149px;
-    font-family: "Sora", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 41px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-4 {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .div-wrapper-2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    position: relative;
-    flex: 0 0 auto;
-    background-color: #064d49;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .frame .text-wrapper-5 {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "Sora", Helvetica;
-    font-weight: 400;
-    color: #fff2db;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-wrapper-3 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    position: relative;
-    flex: 0 0 auto;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 2px solid;
-    border-color: #064d49;
-  }
-  
-  .frame .text-wrapper-6 {
-    position: relative;
-    width: fit-content;
-    margin-top: -2px;
-    font-family: "Sora", Helvetica;
-    font-weight: 400;
-    color: #064d49;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
+
+}

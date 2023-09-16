@@ -1,3 +1,4 @@
 # .gitignore
 .env
 firebase-sdk-admin.json
+**/__pycache__/
