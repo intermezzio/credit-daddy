@@ -71,7 +71,7 @@ function handleDrop(e) {
     }
 }
 
-const selectFileText = document.getElementById("select-file");
+const selectFileText = document.getElementById("drop-area");
 
 selectFileText.addEventListener("click", function () {
     fileInput.click(); // Trigger a click event on the hidden input

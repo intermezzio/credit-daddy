@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     gap: 41px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .query-input {

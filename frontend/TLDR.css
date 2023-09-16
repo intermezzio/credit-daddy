@@ -259,3 +259,24 @@
   color: #064D49;
   outline: none;
 }
+
+table, tbody, tr, td{
+  border: 2px solid #064D49;
+  border-collapse: collapse;
+}
+
+table{
+  width: 100%;
+  max-width: 600px;
+}
+
+td{
+  padding: 12px;
+}
+
+.row-title{
+  background-color: #FFF3DC;
+  font-weight: bold;
+  font-family: "Lora";
+  font-size: 20px;
+}

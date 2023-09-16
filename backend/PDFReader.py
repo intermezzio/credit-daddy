@@ -2,10 +2,13 @@ import fitz  # PyMuPDF
 
 pdfpath = "C:/Users/USER/Desktop/Project/Project/backend/1.pdf"
 
-def pdf_to_text(filename: str):
+def pdf_to_text(filepath: str):
 
     # Open the PDF file
-    with fitz.open(filename) as pdf_document:
+
+    print(filepath)
+
+    with fitz.open(filepath) as pdf_document:
 
         page_content = {}
 
@@ -24,6 +27,8 @@ def pdf_to_text(filename: str):
     # Print the sanitized page content
     for page_num, content in page_content.items():
         result_text += content
+
+    print(result_text)
     
     return result_text
 

@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora&family=Sora:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="TLDR.css"/>
+    <link rel="shortcut icon" href="./Images/Favicon.svg" type="image/x-icon">
     
 </head>
 <body>
@@ -17,14 +18,14 @@
     <img src="./Images/Bg-noise.png" id="bg-noise">
 
     <!-- Navbar -->
-    <section class="nav">
-        <img src="./Images/Logo.svg" alt="Credit Daddy Logo">
+    <nav class="nav dark">
+        <img src="./Images/Logo-light.svg" alt="Credit Daddy Logo" onclick="window.location.href='./index.html'">
         <div class="nav-items">
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
             <a href="#">About</a>
-            <a href="#">Compare</a>
+            <a href="./card-compare.html">Compare</a>
         </div>
-    </section>
+    </nav>
 
     <!--Main TLDR Content--> 
 
@@ -84,9 +85,37 @@
             </div>
         </div>
           <div class="text-wrapper-3">About your card</div>
+          <table>
+            <tbody>
+                <tr>
+                    <td class="row-title">Average APR</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td class="row-title">Cashback Percentage</td>
+                    <td>Between 1% - 5%</td>
+                </tr>
+                <tr>
+                    <td class="row-title">Foreign Transaction Fee</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td class="row-title">Sign up Offer</td>
+                    <td>50$ cash bonus after spending 500$ on purchases in the first 3 months from account opening</td>
+                </tr>
+                <tr>
+                    <td class="row-title">Annual Fee</td>
+                    <td>$0</td>
+                </tr>
+                <tr>
+                    <td class="row-title">Overcharge Fee</td>
+                    <td>$0</td>
+                </tr>
+            </tbody>
+          </table>
           <div class="div-4">
-            <button class="primary">Chat with your contract</button>
-            <button class="secondary">Compare against similar cards</button>
+            <button class="primary" onclick="window.location.href='./card-chat.html'">Chat with your contract</button>
+            <button class="secondary" onclick="window.location.href='./card-compare.html'">Compare against similar cards</button>
           </div>
         </div>
       </div>

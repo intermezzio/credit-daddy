@@ -37,6 +37,10 @@ body {
     z-index: 10000;
 }
 
+.nav img{
+    cursor: pointer;
+}
+
 .nav.dark {
     background-color: #064D49;
     color: #FFF3DC;
