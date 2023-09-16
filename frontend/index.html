@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora&family=Sora:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <script src="script.js" defer></script>
     
 </head>
 <body>
@@ -36,14 +37,16 @@
             <p class="text-wrapper-2">You’ve got questions about your potential credit card. We can answer them.</p>
           </div>
         </div>
-        <div class="FileButton">
+
+        <div class="FileButton" id="drop-area">
           <p class="text-wrapper-3">Upload your credit card contract</p>
           <img class="img" src="Images/Frame 14 (2).svg" />
-            <input type="file" name="file" id="file" style="display:none;"> 
+          <input type="file" name="file" id="file" style="display: none;">
           <p class="drag-and-drop-or">
-            <span class="span">Drag and drop, or </span> <span class="text-wrapper-4">select a file</span>
+              <span class="span">Drag and drop, or </span> <span class="text-wrapper-4">select a file</span>
           </p>
-        </div>
+      </div>
+
       </div>
 
       <div class="HowitWorks">
@@ -59,7 +62,11 @@
         </div>
       </div>
      
-
+<footer>
+  <p>
+    Created by team <b>Credit Daddy</b> at Hack the North 2023
+  </p>
+</footer>
 
 
 </body>

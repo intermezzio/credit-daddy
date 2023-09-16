@@ -1,20 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: 0.3s;
-}
 
-body {
-    max-width: 100vw;
-    overflow-x: hidden;
-    background: #FFF3DC;
-}
-
-.bg {
-    opacity: 0.34;
-    filter: blur(100px);
-}
 
 #bg1 {
     width: 59.05288rem;
@@ -40,36 +24,7 @@ body {
     object-fit: cover;
 }
 
-.nav {
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(100px);
-    display: flex;
-    padding: 1.625rem 7.5rem;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-self: stretch;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
 
-.nav-items {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    align-self: stretch;
-}
-
-.nav-items>a {
-    color: #064D49;
-    font-family: "Sora", sans-serif;
-    font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 400;
-    text-decoration: none;
-}
 
 .frame {
     display: flex;
