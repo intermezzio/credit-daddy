@@ -8,7 +8,7 @@ from icecream import ic
 
 
 # Cohere initialization
-co = cohere.Client("nCIYZhZvj6wkkDtaTdtGrtsuwlfvs37hUXl6AUOr")
+co = cohere.Client(os.environ.get("COHERE_API_KEY"))
 
 url = "https://api.cohere.ai/v1/chat"
 
