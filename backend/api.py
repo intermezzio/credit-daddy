@@ -12,9 +12,9 @@ class RequestHandler(BaseHTTPRequestHandler):
             if self.path == "/":
                 self.wfile.write(b"hello world")
         except:
-            self.send_response(404)
+            self.send_response(500)
             self.end_headers()
-            self.wfile.write(b"404 not found")
+            self.wfile.write(b"500 internal server error")
 
     def do_POST(self):
         try:
