@@ -1,25 +1,46 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib.parse import parse_qs
+# from http.server import HTTPServer, BaseHTTPRequestHandler
+# from urllib.parse import parse_qs
 import json
 
+from flask import Flask, redirect, url_for, request
+import db_connect
+
+
+app = Flask(__name__)
+
+@app.route('/card/<id_>')
+def get_card(id_, methods=['GET']):
+    # get card info
+    card_info = db_connect.get_card(id_)
+    return card_info
+
+@app.route('/upload-card', methods=['POST'])
+def analyze_contract():
+    name = request.form['name']
+    # get card 
+    return id_
+
+if __name__ == '__main__':
+   app.run(debug=True, port=80)
+
 # port number for test server
-PORT = 80
+# PORT = 80
 
 
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        try:
-            if self.path == "/":
-                self.wfile.write(b"hello world")
-        except:
-            self.send_response(500)
-            self.end_headers()
-            self.wfile.write(b"500 internal server error")
+# class RequestHandler(BaseHTTPRequestHandler):
+#     def do_GET(self):
+#         try:
+#             if self.path == "/":
+#                 self.wfile.write(b"hello world")
+#         except:
+#             self.send_response(500)
+#             self.end_headers()
+#             self.wfile.write(b"500 internal server error")
 
-    def do_POST(self):
-        try:
-            if self.path == "/":
-                self.wfile.write(b"hello world")
+#     def do_POST(self):
+#         try:
+#             if self.path == "/":
+#                 self.wfile.write(b"hello world")
             #     length = int(self.headers.get("content-length"))
             #     request = json.loads(self.rfile.read(length))
 
@@ -61,27 +82,27 @@ class RequestHandler(BaseHTTPRequestHandler):
             #     self.end_headers()
             #     self.wfile.write(b"404 not found")
 
-        except:
-            self.send_response(500)
-            self.end_headers()
-            self.wfile.write(b"500 internal server error")
+#         except:
+#             self.send_response(500)
+#             self.end_headers()
+#             self.wfile.write(b"500 internal server error")
 
-    def do_OPTIONS(self):
-        self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type")
-        self.send_header("Access-Control-Max-Age", "86400")
-        self.send_header("Vary", "Accept-Encoding, Origin")
-        self.end_headers()
+#     def do_OPTIONS(self):
+#         self.send_response(204)
+#         self.send_header("Access-Control-Allow-Origin", "*")
+#         self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+#         self.send_header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type")
+#         self.send_header("Access-Control-Max-Age", "86400")
+#         self.send_header("Vary", "Accept-Encoding, Origin")
+#         self.end_headers()
 
 
-if __name__ == "__main__":
-    print("Initializing server")
-    httpd = HTTPServer(("0.0.0.0", PORT), RequestHandler)
-    print("Wrapping SSL")
-    # httpd.socket = ssl.wrap_socket(
-    #     httpd.socket, keyfile=SSL_KEY, certfile=SSL_CERT, server_side=True
-    # )
-    print("Serving on port %d" % PORT)
-    httpd.serve_forever()
+# if __name__ == "__main__":
+#     print("Initializing server")
+#     httpd = HTTPServer(("0.0.0.0", PORT), RequestHandler)
+#     print("Wrapping SSL")
+#     # httpd.socket = ssl.wrap_socket(
+#     #     httpd.socket, keyfile=SSL_KEY, certfile=SSL_CERT, server_side=True
+#     # )
+#     print("Serving on port %d" % PORT)
+#     httpd.serve_forever()
