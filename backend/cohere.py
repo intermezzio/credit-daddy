@@ -1,6 +1,6 @@
 import pdfplumber
 
-def pdf_to_text(pdf_file: str):
+def pdf_to_text(pdf_file: str) -> str:
     """Extract text and statement dates from the PDF"""
 
     with pdfplumber.open(pdf_file) as pdf:
