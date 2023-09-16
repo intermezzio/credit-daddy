@@ -95,7 +95,16 @@ def extract_card_details(input_contract: str):
 
 
 def ask_more_card_details(input_contract: str, question: str):
-    pass
+    response = co.chat(
+        message=question,
+        # documents has title of document and snippet of text
+        documents=[
+            {"title": "Card Terms and Conditions", "snippet": input_contract},
+        ],
+        prompt_truncation="AUTO",
+    )
+    return response.summary
+
 
 
 if __name__ == "__main__":
