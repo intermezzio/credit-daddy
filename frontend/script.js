@@ -44,3 +44,17 @@ function handleDrop(e) {
         alert("Please drop a single PDF file.");
     }
 }
+
+const selectFileText = document.getElementById("select-file");
+
+selectFileText.addEventListener("click", function () {
+    fileInput.click(); // Trigger a click event on the hidden input
+});
+
+// Listen for file selection and update the text
+fileInput.addEventListener("change", function () {
+    if (fileInput.files.length > 0) {
+        const fileName = fileInput.files[0].name;
+        selectFileText.querySelector(".text-wrapper-4").textContent = fileName;
+    }
+});

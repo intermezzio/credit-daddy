@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@300;400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: 0.3s;
+    font-family: "Sora", sans-serif;
+}
+
+button{
+    cursor: pointer;
 }
 
 body {
@@ -20,14 +27,19 @@ body {
     background: rgba(255, 255, 255, 0.10);
     backdrop-filter: blur(100px);
     display: flex;
-    padding: 1.625rem 7.5rem;
+    padding: 8px 120px;
     justify-content: space-between;
-    align-items: flex-start;
-    align-self: stretch;
-    position: absolute;
+    align-items: center;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 10000;
+}
+
+.nav.dark {
+    background-color: #064D49;
+    color: #FFF3DC;
 }
 
 .nav-items {
@@ -45,4 +57,41 @@ body {
     font-style: normal;
     font-weight: 400;
     text-decoration: none;
+    border: 1px solid transparent;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.nav.dark>.nav-items>a {
+    color: #FFF3DC;
+}
+
+.nav-items>a:hover {
+    border: 1px solid #064D49;
+}
+
+
+.nav.dark>.nav-items>a:hover {
+    border: 1px solid #FFF3DC;
+}
+
+h2.section-title {
+    color: #000;
+    font-family: "Lora", serif;
+    font-size: 2.5625rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+footer {
+    display: flex;
+    padding: 1.625rem 13.125rem;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: #064D49;
+    color: #FFF3DC;
+    font-family: "Sora", sans-serif;
+    font-size: 16px;
+
 }
