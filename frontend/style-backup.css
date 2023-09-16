@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+    font-family: "Sora", sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: #FFF3DC;
+}
+
+.bg {
+    opacity: 0.34;
+    filter: blur(100px);
+}
+
+.nav {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(100px);
+    display: flex;
+    padding: 8px 120px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.nav.dark {
+    background-color: #064D49;
+    color: #FFF3DC;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    align-self: stretch;
+}
+
+.nav-items>a {
+    color: #064D49;
+    font-family: "Sora", sans-serif;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.nav.dark>.nav-items>a {
+    color: #FFF3DC;
+}
+
+.nav-items>a:hover {
+    border: 1px solid #064D49;
+}
+
+
+.nav.dark>.nav-items>a:hover {
+    border: 1px solid #FFF3DC;
+}
+
+h2.section-title {
+    color: #000;
+    font-family: "Lora", serif;
+    font-size: 2.5625rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+footer {
+    display: flex;
+    padding: 1.625rem 13.125rem;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: #064D49;
+    color: #FFF3DC;
+    font-family: "Sora", sans-serif;
+    font-size: 16px;
+
+}
+
+*.credit-card-template > *{
+    z-index: 2;
+}
+
+.credit-card-template{
+    width: 405px;
+    height: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 16px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+.credit-card-template-bg{
+    position: absolute;
+    z-index: 1;
+}
+
+#credit-card-template-bg-1{
+    top: -70%;
+    left: -50%;
+    filter: blur(50px);
+}
+
+#credit-card-template-bg-1 > g > path{
+    fill: #16BF82;
+}
+
+#credit-card-template-bg-2{
+    bottom: -70%;
+    right: -50%;
+    filter: blur(50px);
+}
+
+#credit-card-template-bg-2 > g > path{
+    fill: #2CCAED;
+}
+
+#credit-card-template-bg-noise{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+}
+
+.credit-card-header{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.credit-card-name{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.credit-card-middle-images{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.credit-card-number{
+    display: flex;
+    gap: 8px;
+}
+
+.credit-card-number-set{
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+}
+
+.credit-card-number-dot{
+    height: 8px;
+    width: 8px;
+    background-color: black;
+    border-radius: 8px;
+}
