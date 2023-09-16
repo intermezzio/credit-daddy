@@ -115,6 +115,11 @@ def get_chats(id_: str):
     return [chat.dict() for chat in query.stream()]
 
 
+def get_contract(id_: str) -> str:
+    if card := get_card(id_):
+        return card.get("contract", "")
+    return ""
+
 def calc_metric(
     foreign_overcharge: float,
     apr_intro_offer: float,
@@ -122,7 +127,7 @@ def calc_metric(
     row_data: dict,
 ):
     card_score = (
-        +row_data["foreign-fee"] / 3 * (1 - foreign_overcharge)
+        row_data["foreign-fee"] / 3 * (1 - foreign_overcharge)
         + row_data["overcharge-fee"] / 15 * foreign_overcharge
         + row_data["avg-apr"] / 15 * (1 - apr_intro_offer)
         + row_data["intro-offer"] * 1.5 * apr_intro_offer

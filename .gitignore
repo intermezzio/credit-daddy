@@ -2,3 +2,4 @@
 .env
 firebase-sdk-admin.json
 **/__pycache__/
+cache/
