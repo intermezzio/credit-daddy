@@ -15,10 +15,10 @@ url = "https://api.cohere.ai/v1/chat"
 
 def extract_card_details(input_contract: str):
 
-    message_1 = "Please list out the Company Name (str), Card Type [ie Visa, Mastercard] (str), Avg APR (float), " \
-            "Lowest Cashback Percentage (float), Highest Cashback Percentage (float), Foreign Transaction Fee (float), Sign on Offer (bool), " \
-            "Offer details (str), Annual Fee (float), and Overcharge fee (float). " \
-            "Only describe one card list in a single level JSON format. If you don't have data just put an empty string '' for strings and a '0' for floats."
+    message_1 = "Please list out the Bank Name (TD, Royal Bank of Canada, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
+            "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float percentage), and finally Overcharge fee (float percentage)." \
+            "Only describe one card list in a single level JSON format. If you don't have data just put N/A for strings and a '-1' for floats. " \
+            "The output should look like: { bank_name: TD, card type: Visa, avg apr: 20.24, min cashback: N/A, foreign transaction fee: 3, sign up offer: N/A, annual fee: N/A, overcharge fee: N/A } in valid JSON."
     response_1 = co.chat(
         message=message_1,
         # documents has title of document and snippet of text
@@ -50,55 +50,22 @@ def extract_card_details(input_contract: str):
 
     print(bot_answer_text_1)
 
+    # convert to json
+    bot_answer_json_1 = json.loads(bot_answer_text_1)
+
+
+
     if True:
-        return
-
-    bot_answer_text_1 = json.loads(bot_answer_text_1)
-    bot_answer = {"user_name": "Bot", "text": bot_answer_text_1}
-
-    print("First answer: \n")
-    print(json.dumps(bot_answer_text_1, indent=2))
-
-    # ---------------------------------------------#
-
-    payload = {
-        "message": "What is the company name? Don't use JSON. Answer like a normal human.",
-        # documents has title of document and snippet of text
-        "documents": [
-            {"title": "Card Terms and Conditions", "snippet": input_contract},
-        ],
-        "prompt_truncation": "AUTO",
-    }
-    headers = {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "authorization": "Bearer rhs2oirDH8IMSqHI2P4oCIVqXoU6IzxbsYsBEcI3",
-    }
-
-    # Get response from Cohere API and print the answer text
-
-    response = requests.post(url, json=payload, headers=headers)
-    response_data = response.json()
-    bot_answer_text_2 = response_data.get("text", "Key not found")
-
-    print("Second answer: \n")
-    print(bot_answer_text_2)
-
-    full_summary = {
-        "company-name": bot_answer_text_1.pop("Company Name"),
-        "card-type": bot_answer_text_1.pop("Card Type"),
-        "avg-apr": float(bot_answer_text_1.pop("Avg APR").strip("%")),
-    }
-
-    # add to firebase firestore
-    # doc_ref = db.collection("cards").add(bot_answer_json)
-
+        return bot_answer_json_1
 
 def ask_more_card_details(input_contract: str, question: str):
     pass
 
 
 if __name__ == "__main__":
-    result_text = pdf_to_text("../data/td.pdf")
+    result_text = pdf_to_text("../data/CIBC.pdf")
+
+    print("Sanitized PDF:")
+    print(result_text)
 
     extract_card_details(result_text)
