@@ -76,12 +76,12 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
 
-if __name__ == "__main__":
-    print("Initializing server")
-    httpd = HTTPServer(("0.0.0.0", PORT), RequestHandler)
-    print("Wrapping SSL")
-    # httpd.socket = ssl.wrap_socket(
-    #     httpd.socket, keyfile=SSL_KEY, certfile=SSL_CERT, server_side=True
-    # )
-    print("Serving on port %d" % PORT)
-    httpd.serve_forever()
+# if __name__ == "__main__":
+#     print("Initializing server")
+#     httpd = HTTPServer(("0.0.0.0", PORT), RequestHandler)
+#     print("Wrapping SSL")
+#     # httpd.socket = ssl.wrap_socket(
+#     #     httpd.socket, keyfile=SSL_KEY, certfile=SSL_CERT, server_side=True
+#     # )
+#     print("Serving on port %d" % PORT)
+#     httpd.serve_forever()
