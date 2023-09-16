@@ -1,0 +1,6 @@
+{
+    "name": "Credit Daddy",
+    "description": "Extract metrics from credit card contracts and compare them",
+    "repository": "https://github.com/intermezzio/credit-daddy",
+    "keywords": ["python", "cohere", "nlp", "firebase", "heroku"]
+  }

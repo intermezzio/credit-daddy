@@ -1,28 +1,14 @@
 import requests
-from dotenv import load_dotenv
 import os
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 import json
 import cohere
 from icecream import ic
 
 
-# Initialize Firebase
-cred = credentials.Certificate("firebase-sdk-admin.json")
-firebase_admin.initialize_app(cred)
-
-# Initialize Firestore Database
-db = firestore.client()
-
-# env variables
-load_dotenv()
-
-api_key = os.getenv("FIREBASE_API_KEY")
 
 # Cohere initialization
-co = cohere.Client("TKpgWBxFRFEvlfUUj868ZmXnPuMxqzS5egq2f4ZD")
+co = cohere.Client("nCIYZhZvj6wkkDtaTdtGrtsuwlfvs37hUXl6AUOr")
 
 url = "https://api.cohere.ai/v1/chat"
 
@@ -32,14 +18,15 @@ def shorten_contract(input_contract: str):
     ic()
     new_contract = ""
 
-    for i in range(0, len(input_contract), 10000):
+    for i in range(0, len(input_contract), 2000):
         ic(i)
-        subcontract = input_contract[10000*i:10000*(i+1)]
+        subcontract = input_contract[i:i+2000]
+        ic(len(subcontract))
 
         response = ic(co.summarize(
             text=subcontract,
             model='command',
-            length='medium',
+            length='long',
             extractiveness='high'
         ))
         new_contract += response.summary
@@ -69,7 +56,7 @@ def extract_card_details(input_contract: str):
 
     # Get response from Cohere API and print the answer text
 
-    response_data = response.summary()
+    response_data = response_1.summary()
 
     user_question = {
         "user_name": "User",
