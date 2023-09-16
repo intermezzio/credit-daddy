@@ -1,211 +1,261 @@
+.bg-vector {
+  position: absolute;
+}
+
+#bg1 {
+  left: 0;
+  top: 0;
+}
+
+#bg2 {
+  right: 0;
+  bottom: 0;
+}
+
+#bg-noise {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
 .frame {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 41px;
-    padding: 60px 120px 100px;
-    position: relative;
-  }
-  
-  .frame .div {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 41px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .overlap-group-wrapper {
-    position: relative;
-    width: 405px;
-    height: 255px;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  
-  .frame .overlap-group {
-    position: relative;
-    height: 255px;
-  }
-  
-  .frame .vector {
-    width: 352px;
-    left: 0;
-    position: absolute;
-    height: 255px;
-    top: 0;
-  }
-  
-  .frame .img {
-    width: 296px;
-    left: -500px;
-    position:relative; left:-1000px; top: 100px;
-    height: 255px;
-  }
-  
-  .frame .image {
-    position: absolute;
-    width: 405px;
-    height: 255px;
-    top: 0;
-    left: 0;
-    mix-blend-mode: multiply;
-  }
-  
-  .frame .image-2 {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 108px;
-    left: 24px;
-    object-fit: cover;
-  }
-  
-  .frame .text-wrapper {
-    position: absolute;
-    top: 26px;
-    left: 24px;
-    font-family: "Sora", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 15.7px;
-    white-space: nowrap;
-  }
-  
-  .frame .text-wrapper-2 {
-    position: absolute;
-    top: 53px;
-    left: 24px;
-    font-family: "Sora", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: 19.6px;
-    white-space: nowrap;
-  }
-  
-  .frame .subtract {
-    position: absolute;
-    width: 19px;
-    height: 31px;
-    top: 113px;
-    left: 360px;
-  }
-  
-  .frame .div-2 {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    position: absolute;
-    top: 226px;
-    left: 14px;
-  }
-  
-  .frame .div-3 {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 0px 8px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .ellipse {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    background-color: #000000;
-    border-radius: 4px;
-  }
-  
-  .frame .text-wrapper-3 {
-    position: relative;
-    width: fit-content;
-    font-family: "Lora-Bold", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 41px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-wrapper {
-    position: relative;
-    width: 414px;
-    height: 585px;
-    background-color: #ffffff;
-  }
-  
-  .frame .text-wrapper-4 {
-    position: absolute;
-    top: 266px;
-    left: 149px;
-    font-family: "Sora", Helvetica;
-    font-weight: 700;
-    color: #000000;
-    font-size: 41px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-4 {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    flex: 0 0 auto;
-  }
-  
-  .frame .div-wrapper-2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    position: relative;
-    flex: 0 0 auto;
-    background-color: #064d49;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .frame .text-wrapper-5 {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "Sora", Helvetica;
-    font-weight: 400;
-    color: #fff2db;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .frame .div-wrapper-3 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    position: relative;
-    flex: 0 0 auto;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 2px solid;
-    border-color: #064d49;
-  }
-  
-  .frame .text-wrapper-6 {
-    position: relative;
-    width: fit-content;
-    margin-top: -2px;
-    font-family: "Sora", Helvetica;
-    font-weight: 400;
-    color: #064d49;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 41px;
+  padding: 100px 120px;
+  position: relative;
+}
+
+.frame .div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 41px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.frame .overlap-group-wrapper {
+  position: relative;
+  width: 405px;
+  height: 255px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.frame .overlap-group {
+  position: relative;
+  height: 255px;
+}
+
+.frame .vector {
+  width: 352px;
+  left: 0;
+  position: absolute;
+  height: 255px;
+  top: 0;
+}
+
+.frame .img {
+  width: 296px;
+  left: -500px;
+  position: relative;
+  left: -1000px;
+  top: 100px;
+  height: 255px;
+}
+
+.frame .image {
+  position: absolute;
+  width: 405px;
+  height: 255px;
+  top: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+}
+
+.frame .image-2 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 108px;
+  left: 24px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper {
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  font-family: "Sora", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 15.7px;
+  white-space: nowrap;
+}
+
+.frame .text-wrapper-2 {
+  position: absolute;
+  top: 53px;
+  left: 24px;
+  font-family: "Sora", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 19.6px;
+  white-space: nowrap;
+}
+
+.frame .subtract {
+  position: absolute;
+  width: 19px;
+  height: 31px;
+  top: 113px;
+  left: 360px;
+}
+
+.frame .div-2 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: absolute;
+  top: 226px;
+  left: 14px;
+}
+
+.frame .div-3 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0px 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.frame .ellipse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
+  border-radius: 4px;
+}
+
+.frame .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  font-family: "Lora", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 41px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .div-wrapper {
+  position: relative;
+  width: 414px;
+  height: 585px;
+  background-color: #ffffff;
+}
+
+.frame .text-wrapper-4 {
+  position: absolute;
+  top: 266px;
+  left: 149px;
+  font-family: "Sora", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 41px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .div-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.frame .div-wrapper-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #064d49;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.frame .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Sora", Helvetica;
+  font-weight: 400;
+  color: #fff2db;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .div-wrapper-3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid;
+  border-color: #064d49;
+}
+
+.frame .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -2px;
+  font-family: "Sora", Helvetica;
+  font-weight: 400;
+  color: #064d49;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.primary {
+  display: flex;
+  padding: 0.75rem 1.25rem;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 8px;
+  background: #064D49;
+  font-size: 20px;
+  color: #FFF3DC;
+  border: none;
+  outline: none;
+}
+.secondary {
+  display: flex;
+  padding: 0.75rem 1.25rem;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 8px;
+  border: 2px solid #064D49;
+  background: transparent;
+  font-size: 20px;
+  color: #064D49;
+  outline: none;
+}
