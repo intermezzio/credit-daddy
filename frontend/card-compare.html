@@ -14,16 +14,16 @@
 <body>
     <!-- Navbar -->
     <nav class="nav dark">
-        <img src="./Images/Logo-light.svg" alt="Credit Daddy Logo">
+        <img src="./Images/Logo-light.svg" alt="Credit Daddy Logo" onclick="window.location.href='./index.html'">
         <div class="nav-items">
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
             <a href="#">About</a>
-            <a href="#">Compare</a>
+            <a href="./card-compare.html">Compare</a>
         </div>
     </nav>
 
     <!-- Filter -->
-    <section class="filter-section">
+    <!-- <section class="filter-section">
         <button class="filter-button">
             <p>Filter</p>
             <img src="./Images/filter icon.svg">
@@ -33,14 +33,16 @@
             <li class="filter-option">No Annual Fee</li>
             <li class="filter-option">No Foreign Fees</li>
         </ol>
-    </section>
+    </section> -->
 
     <!-- Table -->
     <section class="table">
         <table>
             <thead>
                 <tr class="table-header">
-                    <td class="section-title-td"><h2 class="section-title">Card Comparison</h2></td>
+                    <td class="section-title-td">
+                        <h2 class="section-title">Card Comparison</h2>
+                    </td>
                     <td>
                         <div class="credit-card-template">
                             <img src="./Images/card-template-images/image 1.png" class="credit-card-template-bg"
@@ -259,6 +261,80 @@
                     </td>
                 </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Average APR</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr> 
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Minimum Cashback</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr>   
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Foreign Transaction Fee</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr>   
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Sign up Offer</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr>   
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Annual Fee</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr>   
+                <tr>
+                    <td>
+                        <div class="metric">
+                            <button><img src="./Images/Info icon.svg"></button>
+                            <h3>Overcharge fee</h3>
+                        </div>
+                    </td>
+                    <td>18%</td>
+                    <td>15%</td>
+                    <td>17%</td>
+                    <td>13%</td>
+                </tr>   
+            </tbody>
         </table>
     </section>
 
