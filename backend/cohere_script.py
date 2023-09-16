@@ -4,7 +4,7 @@ import firebase_admin
 import json
 import cohere
 from icecream import ic
-from PDFReader import read_pdf_content 
+from PDFReader import pdf_to_text 
 
 
 
@@ -99,6 +99,6 @@ def ask_more_card_details(input_contract: str, question: str):
 
 
 if __name__ == "__main__":
-    result_text = read_pdf_content("../data/Capital.pdf")
+    result_text = pdf_to_text("../data/td.pdf")
 
     extract_card_details(result_text)

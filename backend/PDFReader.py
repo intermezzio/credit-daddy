@@ -1,11 +1,11 @@
 import fitz  # PyMuPDF
 
-pdf_path = "../data/Apple-Card-Customer-Agreement.pdf"
+pdfpath = "C:/Users/USER/Desktop/Project/Project/backend/1.pdf"
 
 def pdf_to_text(filename: str):
 
     # Open the PDF file
-    with fitz.open(pdf_path) as pdf_document:
+    with fitz.open(filename) as pdf_document:
 
         page_content = {}
 
