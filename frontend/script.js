@@ -34,12 +34,38 @@ function unhighlight() {
 }
 
 function handleDrop(e) {
+    const apiUrl = 'http://api.creditdaddy.tech/upload-card';
     const dt = e.dataTransfer;
     const files = dt.files;
 
     if (files.length === 1 && files[0].type === 'application/pdf') {
         // If a single PDF file is dropped, set it as the input value
         fileInput.files = files;
+        const formData = new FormData();
+        formData.append('pdf_file', fileInput.files[0]);
+
+        // Fetch options for the POST request
+        const fetchOptions = {
+            method: 'POST',
+            body: formData,
+        };
+
+        // Send the POST request
+        fetch(apiUrl, fetchOptions)
+        .then((response) => {
+            if (response.ok) {
+            return response.text();
+            } else {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+        })
+        .then((data) => {
+            console.log('File successfully uploaded:', data);
+        })
+        .catch((error) => {
+            console.error('An error occurred:', error.message);
+        });
+
     } else {
         alert("Please drop a single PDF file.");
     }
