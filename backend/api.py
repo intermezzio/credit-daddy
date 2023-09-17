@@ -1,6 +1,7 @@
 # from http.server import HTTPServer, BaseHTTPRequestHandler
 # from urllib.parse import parse_qs
 import json
+import os
 import sys
 
 from flask import Flask, redirect, url_for, request
@@ -45,13 +46,16 @@ def get_answer(id_, question):
 
 
 @app.route("/upload-card", methods=["POST"])
-@cross_origin
 def analyze_contract():
+    ic(request)
+    ic(request.files)
+    ic(request.files["file"])
     name = request.form["name"]
-    if "file" not in request.files or request.filename == "":
+    if "file" not in request.files:
         pass
 
-    if request.filename.rsplit(".", 1)[1].lower() not in ALLOWED_EXTENSIONS:
+    file = request.files["file"]
+    if file.filename.rsplit(".", 1)[1].lower() not in ALLOWED_EXTENSIONS:
         pass
 
     # see if we already have it

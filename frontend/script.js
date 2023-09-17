@@ -43,6 +43,7 @@ function handleDrop(e) {
         fileInput.files = files;
         const formData = new FormData();
         formData.append('file', fileInput.files[0]);
+        formData.append('name', "happy");
 
         // Fetch options for the POST request
         const fetchOptions = {

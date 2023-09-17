@@ -15,7 +15,7 @@ url = "https://api.cohere.ai/v1/chat"
 
 def extract_card_details(input_contract: str):
 
-    message_1 = "Please list out the Bank Name (TD, Royal Bank of Canada, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
+    message_1 = "Please list out the Company Name (TD, Royal Bank of Canada, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
             "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float percentage), and finally Overcharge fee (float percentage)." \
             "Only describe one card list in a single level JSON format. If you don't have data just put N/A for strings and a '-1' for floats. " \
             "The output should look like: { bank_name: TD, card type: Visa, avg apr: 20.24, min cashback: N/A, foreign transaction fee: 3, sign up offer: N/A, annual fee: N/A, overcharge fee: N/A } in valid JSON."
@@ -51,7 +51,7 @@ def extract_card_details(input_contract: str):
     print(bot_answer_text_1)
 
     # convert to json
-    bot_answer_json_1 = json.loads(bot_answer_text_1)
+    bot_answer_json_1 = ic(json.loads(bot_answer_text_1))
 
 
 
