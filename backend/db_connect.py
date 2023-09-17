@@ -81,6 +81,8 @@ def upload_card(
 
     db.collection("cards").add(row_data)
 
+    return id_
+
 
 def upload_chat(id_: str, question: str, answer: str):
     row_data = {
