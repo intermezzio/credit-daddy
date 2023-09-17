@@ -21,10 +21,19 @@ creditCardContainer.addEventListener("mousemove", (event) => {
     creditCardContainer.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 });
 
+let cardId = "cibc-aventura-visa-infinite-privilege";
+
+// URL Modification
+let currentUrl = window.location.href; // Get the current URL
+
+if (!currentUrl.includes("?card")) {
+    currentUrl += `?card=${cardId}`;
+}
+window.history.pushState({ cardId: cardId }, "", currentUrl);
 
 async function fetchData() {
     try {
-        const response = await fetch('http://api.creditdaddy.tech/card/regular-cash-back');
+        const response = await fetch('http://api.creditdaddy.tech/card/' + cardId);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -32,7 +41,40 @@ async function fetchData() {
 
         const data = await response.json();
 
-        console.log(data);
+        // Intro Offer Details
+        let introOfferDetails;
+        if (data["intro-offer-details"] !== "") {
+            introOfferDetails = data["intro-offer-details"];
+        } else {
+            introOfferDetails = "This card does not offer a sign up bonus."
+        }
+
+        // Card Color
+        let cardColours;
+        if (data["company-name"] === "Royal Bank of Canada") {
+            cardColours = ["#0088ff", "#FFF814"];
+        }
+        else if (data["company-name"] === "Canadian Imperial Bank of Commerce") {
+            cardColours = ["#FF0000", "#ff88a3"];
+        }
+        else if (data["company-name"] === "The Toronto-Dominion Bank") {
+            cardColours = ["#4CF30A", "#FFFFFF"];
+        }
+        else {
+            cardColours = ["#16BF82", "#2CCAED"];
+        }
+        document.querySelector("#credit-card-template-bg-1 > g > path").setAttribute("style", "fill: " + cardColours[0] + ";");
+        document.querySelector("#credit-card-template-bg-2 > g > path").setAttribute("style", "fill: " + cardColours[1] + ";");
+
+        // Filling in Information
+        document.querySelector("#company-name").innerText = data["company-name"];
+        document.querySelector("#name").innerText = data["name"];
+        document.querySelector("#name").innerText = data["name"];
+        document.querySelector("#avg-apr").innerText = data["avg-apr"].toString() + "%";
+        document.querySelector("#cashback").innerText = "Between " + data["min-cashback"].toString() + "%" + " and " + data["max-cashback"].toString() + "%";
+        document.querySelector("#intro-offer-details").innerText = introOfferDetails;
+        document.querySelector("#annual-fee").innerText += data["annual-fee"];
+        document.querySelector("#overcharge-fee").innerText += data["overcharge-fee"];
     } catch (error) {
         console.error('There was a problem fetching the data:', error);
     }

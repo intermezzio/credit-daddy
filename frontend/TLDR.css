@@ -28,7 +28,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 41px;
-  padding: 100px 120px;
+  padding: 120px;
   position: fixed;
   height: 100vh;
   overflow-y: scroll;
