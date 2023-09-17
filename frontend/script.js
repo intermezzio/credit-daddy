@@ -42,13 +42,14 @@ function handleDrop(e) {
         // If a single PDF file is dropped, set it as the input value
         fileInput.files = files;
         const formData = new FormData();
-        formData.append('pdf_file', fileInput.files[0]);
+        formData.append('file', fileInput.files[0]);
 
         // Fetch options for the POST request
         const fetchOptions = {
             method: 'POST',
             body: formData,
         };
+        console.log(fetchOptions);
 
         // Send the POST request
         fetch(apiUrl, fetchOptions)

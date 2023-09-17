@@ -42,7 +42,7 @@ def get_answer(id_, question, methods=["GET"]):
     return answer
 
 
-@app.route("/upload-card", methods=["POST"])
+@app.route("/upload-card")
 def analyze_contract(methods=["POST"]):
     name = request.form["name"]
     if "file" not in request.files or request.filename == "":
