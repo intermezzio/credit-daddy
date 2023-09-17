@@ -24,7 +24,7 @@ def extract_card_details(input_contract: str):
     message_1 = "Please list out the Company Name (TD, Royal Bank of Canada, etc), Card Name (CIBC Dividend Card, RBC Ion Plus Visa, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
             "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float), and finally Overcharge fee (float percentage)." \
             "Only describe one card list in a single level JSON format. If you don't have data just put N/A for strings and a '-1' for floats. " \
-            "The output should look like EXAMPLE: { Bank Name: , Card Name: , Card Type: , Avg Apr: , Min Cashback: , Max Cashback: , Foreign Transaction Fee: , Sign Up Offer: , Annual Fee: , Overcharge Fee: } in valid JSON."
+            "The output should look like EXAMPLE: { Bank Name: , Card Name: , Card Type: , Avg Apr: , Min Cashback: , Max Cashback: , Foreign Transaction Fee: , Sign up Offer: , Annual Fee: , Overcharge Fee: } in valid JSON."
     response_1 = co.chat(
         message=message_1,
         # documents has title of document and snippet of text
@@ -62,7 +62,7 @@ def extract_card_details(input_contract: str):
         "min_cashback": float_def(bot_answer_json["Min Cashback"], 0),
         "max_cashback": float_def(bot_answer_json["Max Cashback"], 0),
         "foreign_fee": float_def(bot_answer_json["Foreign Transaction Fee"], 0),
-        "intro_offer": bot_answer_json["Sign Up Offer"],
+        "intro_offer": bot_answer_json["Sign up Offer"],
         "bank_name": bot_answer_json["Bank Name"],
         "annual_fee": float_def(bot_answer_json["Annual Fee"], 0),
         "overcharge_fee": float_def(bot_answer_json["Overcharge Fee"], float('nan')),
