@@ -3,6 +3,8 @@
 import json
 
 from flask import Flask, redirect, url_for, request
+from flask_cors import CORS
+
 from werkzeug.utils import secure_filename
 
 import cohere_script
@@ -15,7 +17,7 @@ ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
+CORS(app)
 
 @app.route("/card/<id_>")
 def get_card(id_, methods=["GET"]):
