@@ -38,7 +38,7 @@ def get_chats(id_):
 
 @app.route("/ask/<id_>/<question>", methods=["GET"])
 def get_answer(id_, question):
-    contract = db_connect.get_contract(id_)
+    contract = ic(db_connect.get_contract(id_))
     answer = cohere_script.ask_more_card_details(id_, question)
 
     db_connect.upload_chat(id_, question, answer)
