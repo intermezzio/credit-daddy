@@ -96,7 +96,7 @@ fetchData();
 function questionAsked() {
     document.querySelector(".lds-ring").classList.remove("hidden");
     let rawQuestionText = document.querySelector("#chat-query").value;
-    let questionText = rawQuestionText + "More information: " + JSON.stringify(cardData) + "Use your judgement and general knowledge";
+    let questionText = rawQuestionText + "More information: " + JSON.stringify(cardData) + "Use your judgement and general knowledge. It's ok if you can't find specific documents to back this up. Try your best.";
     let answerText;
     if (questionText == "") {
         return;
