@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credit Daddy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora&family=Sora:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Sora:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="TLDR.css"/>
+    <link rel="stylesheet" href="TLDR.css" />
+    <link rel="stylesheet" href="card-chat.css" />
+    <script src="./TLDR.js" defer></script>
     <link rel="shortcut icon" href="./Images/Favicon.svg" type="image/x-icon">
-    
+
 </head>
+
 <body>
     <img src="./Images/Bg 1.svg" id="bg1" class="bg-vector">
     <img src="./Images/Bg 2.svg" id="bg2" class="bg-vector">
@@ -27,98 +32,140 @@
         </div>
     </nav>
 
-    <!--Main TLDR Content--> 
-
-    <div class="frame">
-        <div class="div">
-          <div class="credit-card-template">
-            <img src="./Images/card-template-images/image 1.png" class="credit-card-template-bg"
-                id="credit-card-template-bg-noise">
-            <svg class="credit-card-template-bg" id="credit-card-template-bg-1" width="480" height="464"
-                viewBox="0 0 480 464" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g opacity="0.4" filter="url(#filter0_f_16_7218)">
-                    <path
-                        d="M138.631 164.5C136.631 143 147.531 100 207.131 100C281.631 100 248.631 207 325.631 207C402.631 207 385.631 267 346.631 306C307.631 345 265.631 364 187.631 364C109.631 364 190.631 251 125.631 251C73.6314 251 112.631 193.333 138.631 164.5Z"
-                         />
-                </g>
-            </svg>
-            <svg class="credit-card-template-bg" id="credit-card-template-bg-2" width="513" height="495" viewBox="0 0 513 495" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g opacity="0.4" filter="url(#filter0_f_16_7219)">
-                    <path
-                        d="M226.712 183.773C149.112 184.173 168.379 248.273 187.712 280.273C143.879 294.106 67.9123 332.273 114.712 374.273C173.212 426.773 226.712 365.773 344.212 333.773C461.712 301.773 395.712 228.273 372.712 168.773C349.712 109.273 351.212 106.773 247.712 100.273C144.212 93.7729 429.712 205.273 309.212 235.273C188.712 265.273 323.712 183.273 226.712 183.773Z"
-                         />
-                </g>
-            </svg>
-            <div class="credit-card-header">
-                <span class="credit-card-company">Royal Bank of Canada</span>
-                <span class="credit-card-name">Student’s First Credit Card</span>
-            </div>
-            <div class="credit-card-middle-images">
-                <img src="./Images/credit-card-template-chip.png">
-                <img src="./Images/credit-card-template-wireless.png">
-            </div>
-            <div class="credit-card-number">
-                <div class="credit-card-number-set">
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
+    <!--Main TLDR Content-->
+    <div class="page-content-wrapper">
+        <div class="frame" style="background-color: #fff;">
+            <div class="div">
+                <div class="credit-card-template" id="credit-card-template">
+                    <img src="./Images/card-template-images/image 1.png" class="credit-card-template-bg"
+                        id="credit-card-template-bg-noise">
+                    <svg class="credit-card-template-bg" id="credit-card-template-bg-1" width="480" height="464"
+                        viewBox="0 0 480 464" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.4" filter="url(#filter0_f_16_7218)">
+                            <path
+                                d="M138.631 164.5C136.631 143 147.531 100 207.131 100C281.631 100 248.631 207 325.631 207C402.631 207 385.631 267 346.631 306C307.631 345 265.631 364 187.631 364C109.631 364 190.631 251 125.631 251C73.6314 251 112.631 193.333 138.631 164.5Z" />
+                        </g>
+                    </svg>
+                    <svg class="credit-card-template-bg" id="credit-card-template-bg-2" width="513" height="495"
+                        viewBox="0 0 513 495" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.4" filter="url(#filter0_f_16_7219)">
+                            <path
+                                d="M226.712 183.773C149.112 184.173 168.379 248.273 187.712 280.273C143.879 294.106 67.9123 332.273 114.712 374.273C173.212 426.773 226.712 365.773 344.212 333.773C461.712 301.773 395.712 228.273 372.712 168.773C349.712 109.273 351.212 106.773 247.712 100.273C144.212 93.7729 429.712 205.273 309.212 235.273C188.712 265.273 323.712 183.273 226.712 183.773Z" />
+                        </g>
+                    </svg>
+                    <div class="credit-card-header">
+                        <span class="credit-card-company">Royal Bank of Canada</span>
+                        <span class="credit-card-name">Student’s First Credit Card</span>
+                    </div>
+                    <div class="credit-card-middle-images">
+                        <img src="./Images/credit-card-template-chip.png">
+                        <img src="./Images/credit-card-template-wireless.png">
+                    </div>
+                    <div class="credit-card-number">
+                        <div class="credit-card-number-set">
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                        </div>
+                        <div class="credit-card-number-set">
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                        </div>
+                        <div class="credit-card-number-set">
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                        </div>
+                        <div class="credit-card-number-set">
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                            <div class="credit-card-number-dot"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="credit-card-number-set">
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                </div>
-                <div class="credit-card-number-set">
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                </div>
-                <div class="credit-card-number-set">
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
-                    <div class="credit-card-number-dot"></div>
+                <div class="text-wrapper-3">About your card</div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="row-title" title="Average APR, or Annual Percentage Rate, is the cost you have to pay for borrowing money on a credit card, like an interest fee, usually expressed as a percentage of the amount you owe.">Average APR</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td class="row-title" title="Annual cashback is like getting a small portion of the money you spent on your credit card purchases back as a gift once a year.">Cashback Percentage</td>
+                            <td>Between 1% - 5%</td>
+                        </tr>
+                        <tr>
+                            <td class="row-title" title="A foreign transaction fee is like a small extra charge that you might have to pay when you use your credit card to buy things in a different country.">Foreign Transaction Fee</td>
+                            <td>15%</td>
+                        </tr>
+                        <tr>
+                            <td class="row-title" title="A sign-up offer is like a special bonus or reward you can get when you first sign up for something, like a credit card, often given as an incentive for joining.">Sign up Offer</td>
+                            <td>50$ cash bonus after spending 500$ on purchases in the first 3 months from account
+                                opening</td>
+                        </tr>
+                        <tr>
+                            <td class="row-title" title="An annual fee is like a yearly membership fee you pay to the credit card company for the privilege of using their card, and it can vary in cost depending on the card you choose.">Annual Fee</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td class="row-title" title="An overcharge fee is a penalty you might have to pay if you spend more money with your credit card than your credit limit allows.">Overcharge Fee</td>
+                            <td>$0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="div-4">
+                    <button class="secondary" onclick="window.location.href='./card-compare.html'">Compare against
+                        similar cards</button>
                 </div>
             </div>
         </div>
-          <div class="text-wrapper-3">About your card</div>
-          <table>
-            <tbody>
-                <tr>
-                    <td class="row-title">Average APR</td>
-                    <td>15%</td>
-                </tr>
-                <tr>
-                    <td class="row-title">Cashback Percentage</td>
-                    <td>Between 1% - 5%</td>
-                </tr>
-                <tr>
-                    <td class="row-title">Foreign Transaction Fee</td>
-                    <td>15%</td>
-                </tr>
-                <tr>
-                    <td class="row-title">Sign up Offer</td>
-                    <td>50$ cash bonus after spending 500$ on purchases in the first 3 months from account opening</td>
-                </tr>
-                <tr>
-                    <td class="row-title">Annual Fee</td>
-                    <td>$0</td>
-                </tr>
-                <tr>
-                    <td class="row-title">Overcharge Fee</td>
-                    <td>$0</td>
-                </tr>
-            </tbody>
-          </table>
-          <div class="div-4">
-            <button class="primary" onclick="window.location.href='./card-chat.html'">Chat with your contract</button>
-            <button class="secondary" onclick="window.location.href='./card-compare.html'">Compare against similar cards</button>
-          </div>
-        </div>
-      </div>
+        <div class="chat-window">
+            <section class="main-chat">
+                <h2 class="section-title">Chat with your contract</h2>
+                <div class="query-input">
+                    <textarea name="query" id="chat-query" cols="30" rows="8"
+                        placeholder="Got questions? Chat with your card contract..."></textarea>
+                    <button type="submit" id="submit-query">Submit</button>
+                </div>
+                <div class="question-box">
+                    <div class="question">Is there fees if I use my card outside Canada?</div>
+                    <div class="answer">Yes, you get charged a 15% fee on any transactions that happen outside of
+                        Canada.</div>
+                </div>
+                <div class="floating-scroll-info" onclick="window.scrollBy(0, window.innerHeight);">
+                    <img src="./Images/Down Arrow.svg">
+                    <p>Scroll Down For FAQ</p>
+                </div>
+            </section>
 
-    </body>
-    </html>
+            <!-- FAQ -->
+            <section class="faq">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="question-box">
+                    <div class="question">Is there fees if I use my card outside Canada?</div>
+                    <div class="answer">Yes, you get charged a 15% fee on any transactions that happen outside of
+                        Canada.</div>
+                </div>
+                <div class="question-box">
+                    <div class="question">Is there fees if I use my card outside Canada?</div>
+                    <div class="answer">Yes, you get charged a 15% fee on any transactions that happen outside of
+                        Canada.</div>
+                </div>
+                <div class="question-box">
+                    <div class="question">Is there fees if I use my card outside Canada?</div>
+                    <div class="answer">Yes, you get charged a 15% fee on any transactions that happen outside of
+                        Canada.</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
