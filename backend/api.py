@@ -88,7 +88,9 @@ def compare_card(id_):
     if id_ not in model_cards:
         ids_to_compare = [id_] + model_cards[:4]
     else:
-        ids_to_compare = [id_] + list(set(model_cards).remove(id_))
+        other_model_cards = set(model_cards)
+        other_model_cards.remove(id_)
+        ids_to_compare = [id_] + list(other_model_cards)
     
     response = make_response(f"http://www.creditdaddy.tech/compare.html?card={','.join(ids)}", 200)
     response.mimetype = "text/plain"
