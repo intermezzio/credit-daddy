@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from icecream import ic
 
+from cohere_script import float_def
 
 # Initialize Firebase
 try:
@@ -120,19 +122,17 @@ def get_contract(id_: str) -> str:
 
 def calc_metric(
     foreign_overcharge: float,
-    apr_intro_offer: float,
-    annual_fee_cashback: float,
+    apr_annual: float,
+    selective_general: float,
     row_data: dict,
 ):
     card_score = (
-        row_data["foreign-fee"] / 3 * (1 - foreign_overcharge)
-        + row_data["overcharge-fee"] / 15 * foreign_overcharge
-        + row_data["avg-apr"] / 15 * (1 - apr_intro_offer)
-        + row_data["intro-offer"] * 1.5 * apr_intro_offer
-        + math.log(row_data["annual_fee"]) / 2 * (1 - annual_fee_cashback)
-        + (2 * row_data["min-cashback"] + row_data["max-cashback"])
-        / 4
-        * annual_fee_cashback
+        float_def(row_data["foreign-fee"],0) / 3 * (1 - foreign_overcharge)
+        + float_def(row_data["overcharge-fee"] or 30, 30) / 15 * foreign_overcharge
+        + float_def(row_data["avg-apr"], 20) / 15 * (1 - apr_annual)
+        - math.log(float_def(row_data["annual-fee"], 0) + 1) / 2 * apr_annual
+        + float_def(row_data["min-cashback"], 0) * (1 - selective_general)
+        + float_def(row_data["max-cashback"], 0) / 3 * selective_general
     )
 
     return card_score
@@ -140,18 +140,20 @@ def calc_metric(
 
 def get_optimal(
     foreign_overcharge: float,
-    apr_intro_offer: float,
-    annual_fee_cashback: float,
-    n: int = 3,
+    apr_annual: float,
+    selective_general: float,
+    n: int,
 ):
     id_to_metric = {}
 
     for card in db.collection("cards").stream():
-        id_to_metric.update(
-            card.id,
-            calc_metric(
-                foreign_overcharge, apr_intro_offer, annual_fee_cashback, card.to_dict()
+        
+        id_to_metric.update({
+            card.id: calc_metric(
+                foreign_overcharge, apr_annual, selective_general, card.to_dict()
             ),
-        )
+        })
+
+    ic(id_to_metric)
 
     return heapq.nlargest(n, id_to_metric.keys(), key=id_to_metric.get)
