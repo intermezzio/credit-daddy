@@ -62,7 +62,7 @@ def extract_card_details(input_contract: str):
         "min_cashback": float_def(bot_answer_json["Min Cashback"], 0),
         "max_cashback": float_def(bot_answer_json["Max Cashback"], 0),
         "foreign_fee": float_def(bot_answer_json["Foreign Transaction Fee"], 0),
-        "intro_offer": bot_answer_json["Sign up Offer"],
+        "intro_offer_details": bot_answer_json["Sign up Offer"],
         "bank_name": bot_answer_json["Bank Name"],
         "annual_fee": float_def(bot_answer_json["Annual Fee"], 0),
         "overcharge_fee": float_def(bot_answer_json["Overcharge Fee"], float('nan')),
