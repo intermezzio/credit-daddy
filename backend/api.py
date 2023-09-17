@@ -19,7 +19,7 @@ ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-# CORS(app)
+CORS(app)
 
 @app.route("/card/<id_>", methods=["GET"])
 def get_card(id_):
