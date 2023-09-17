@@ -33,20 +33,55 @@
 }
 
 .filter-option.clicked{
-    background-color: #ffd27f;
+    background-color: #ffdd9f;
 }
 
 .table{
     width: 100vw;
     overflow: scroll;
     padding: 100px 120px;
+    padding-top: 164px;
     padding-right: calc(120px - 41px);
 }
+
+.table::-webkit-scrollbar {
+    display: none;
+  }
+  
 
 .table-header > td{
     padding-right: 41px;
 }
 
+.table table tr td{
+    padding-bottom: 41px;
+}
+
 .section-title-td{
     display: flex;
+}
+
+.metric{
+    display: flex;
+}
+
+.metric button{
+    padding: 4px;
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-right: 8px;
+}
+
+h3{
+font-family: "Lora";
+font-size: 1.625rem;
+font-style: normal;
+font-weight: 700;
+line-height: 115%; /* 1.86875rem */
+padding-right: 26px;
+}
+
+tbody td{
+    font-size: 20px;
 }

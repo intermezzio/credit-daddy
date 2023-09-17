@@ -1,8 +1,12 @@
 # from http.server import HTTPServer, BaseHTTPRequestHandler
 # from urllib.parse import parse_qs
 import json
+import sys
 
 from flask import Flask, redirect, url_for, request
+from flask_cors import CORS, cross_origin
+from icecream import ic
+
 from werkzeug.utils import secure_filename
 
 import cohere_script
@@ -15,24 +19,24 @@ ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+CORS(app)
 
-
-@app.route("/card/<id_>")
-def get_card(id_, methods=["GET"]):
+@app.route("/card/<id_>", methods=["GET"])
+def get_card(id_):
     # get card info
     card_info = db_connect.get_card(id_)
     return card_info
 
 
-@app.route("/chats/<id_>")
-def get_chats(id_, methods=["GET"]):
+@app.route("/chats/<id_>", methods=["GET"])
+def get_chats(id_):
     # get chats
     chats = db_connect.get_chats(id_)
     return chats
 
 
-@app.route("/ask/<id_>/<question>")
-def get_answer(id_, question, methods=["GET"]):
+@app.route("/ask/<id_>/<question>", methods=["GET"])
+def get_answer(id_, question):
     contract = db_connect.get_contract(id_)
     answer = cohere_script.ask_more_card_details(id_, question)
 
@@ -41,7 +45,8 @@ def get_answer(id_, question, methods=["GET"]):
 
 
 @app.route("/upload-card", methods=["POST"])
-def analyze_contract(methods=["POST"]):
+@cross_origin
+def analyze_contract():
     name = request.form["name"]
     if "file" not in request.files or request.filename == "":
         pass
@@ -76,7 +81,7 @@ def analyze_contract(methods=["POST"]):
 
 
 @app.route("/recommend", methods=["GET"])
-def recommend_cardsget_optimal(
+def recommend_cards(
     foreign_overcharge: float = 0,
     apr_intro_offer: float = 0,
     annual_fee_cashback: float = 0,
