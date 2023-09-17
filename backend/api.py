@@ -2,6 +2,7 @@
 # from urllib.parse import parse_qs
 import json
 
+from icecream import ic
 from flask import Flask, redirect, url_for, request
 from flask_cors import CORS, cross_origin
 
