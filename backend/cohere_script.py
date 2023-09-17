@@ -73,7 +73,17 @@ def extract_card_details(input_contract: str):
 
     return row_entry
 
-def ask_more_card_details(input_contract: str, question: str):
+def validate_comment(answer: str) -> bool:
+    l_ans = answer.lower()
+
+    if "i don't know" in l_ans:
+        return False
+    if "sorry" in l_ans or "unfortunately" in l_ans:
+        return False    
+
+    return True
+
+def ask_more_card_details(input_contract: str, question: str, tries: int = 3):
     response = co.chat(
         message=question,
         # documents has title of document and snippet of text
@@ -82,7 +92,12 @@ def ask_more_card_details(input_contract: str, question: str):
         ],
         prompt_truncation="AUTO",
     )
-    return response.text
+
+    answer = response.text
+    if not validate_comment and tries > 1:
+        return ask_more_card_details(input_contract, question, tries-1)
+    
+    return answer
 
 
 

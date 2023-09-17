@@ -110,7 +110,7 @@ def get_chats(id_: str):
         .order_by("timestamp")
     )
 
-    return [chat.dict() for chat in query.stream()]
+    return [chat.to_dict() for chat in query.stream()]
 
 
 def get_contract(id_: str) -> str:
