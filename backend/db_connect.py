@@ -147,10 +147,11 @@ def get_optimal(
     id_to_metric = {}
 
     for card in db.collection("cards").stream():
+        card_dict = card.to_dict()
         
         id_to_metric.update({
-            card.id: calc_metric(
-                foreign_overcharge, apr_annual, selective_general, card.to_dict()
+            card_dict["id"]: calc_metric(
+                foreign_overcharge, apr_annual, selective_general, card_dict
             ),
         })
 

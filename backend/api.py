@@ -38,7 +38,7 @@ def get_chats(id_):
 
 @app.route("/ask/<id_>/<question>", methods=["GET"])
 def get_answer(id_, question):
-    contract = db_connect.get_contract(id_)
+    contract = ic(db_connect.get_contract(id_))
     answer = cohere_script.ask_more_card_details(id_, question)
 
     db_connect.upload_chat(id_, question, answer)
@@ -100,9 +100,9 @@ def recommend_cards(
     foreign_overcharge: float = 0,
     apr_annual: float = 0, # apr_annual
     selective_general: float = 0, # selective_general cashback
-    n: int = 3,
+    n: int = 5,
 ):
-    ids = db_connect.get_optimal(foreign_overcharge, apr_annual, selective_general)
+    ids = db_connect.get_optimal(foreign_overcharge, apr_annual, selective_general, n)
 
     if n == 1:
         # return new id
@@ -111,7 +111,7 @@ def recommend_cards(
         return response
     else:
         # return new id
-        response = make_response(f"http://www.creditdaddy.tech/compare.html?cards={','.join(ids)}", 200)
+        response = make_response(f"http://www.creditdaddy.tech/card-compare.html?cards={','.join(ids)}", 200)
         response.mimetype = "text/plain"
         return response
 
