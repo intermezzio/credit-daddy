@@ -100,9 +100,9 @@ def recommend_cards(
     foreign_overcharge: float = 0,
     apr_annual: float = 0, # apr_annual
     selective_general: float = 0, # selective_general cashback
-    n: int = 3,
+    n: int = 5,
 ):
-    ids = db_connect.get_optimal(foreign_overcharge, apr_annual, selective_general)
+    ids = db_connect.get_optimal(foreign_overcharge, apr_annual, selective_general, n)
 
     if n == 1:
         # return new id

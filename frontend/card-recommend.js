@@ -1,8 +1,9 @@
 submit_btn = document.getElementById("submit");
 
-submit_btn.addEventListener("onclick", recommend);
+// submit_btn.addEventListener("onclick", recommend);
 
 function recommend() {
+    console.log("hi");
     let sliders = document.querySelectorAll(".slidecontainer input.slider");
     let url = "http://api.creditdaddy.tech/recommend?foreign_overcharge="
                 + sliders[0].valueAsNumber + "&apr_annual="
@@ -21,7 +22,7 @@ function recommend() {
             window.location.href = redirectHere;
             
         } catch (error) {
-            console.error("There was a problem fetching the data:", error, answerPlace);
+            console.error("There was a problem fetching the data:", error, url);
         }
         document.querySelector(".lds-ring").classList.add("hidden");
 
@@ -32,3 +33,4 @@ function recommend() {
     fetchAnswerData();
 
 }
+
