@@ -45,6 +45,9 @@ def get_answer(id_, question, methods=["GET"]):
 @app.route("/upload-card")
 @cross_origin()
 def analyze_contract(methods=["GET", "POST"]):
+    ic(request.form)
+    ic(request.files)
+    ic(request.filename)
     name = request.form["name"]
     if "file" not in request.files or request.filename == "":
         pass
