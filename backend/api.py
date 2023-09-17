@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, make_response
 from flask_cors import CORS, cross_origin
 from icecream import ic
 
@@ -42,7 +42,10 @@ def get_answer(id_, question):
     answer = cohere_script.ask_more_card_details(id_, question)
 
     db_connect.upload_chat(id_, question, answer)
-    return answer
+
+    response = make_response(answer, 200)
+    response.mimetype = "text/plain"
+    return response
 
 
 @app.route("/upload-card", methods=["POST"])
