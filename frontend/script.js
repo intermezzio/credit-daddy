@@ -35,7 +35,7 @@ function unhighlight() {
 
 function uploadFile(files) {
     const apiUrl = 'http://api.creditdaddy.tech/upload-card';
-    
+
     if (files.length === 1 && files[0].type === 'application/pdf') {
         // If a single PDF file is dropped, set it as the input value
         fileInput.files = files;
@@ -48,22 +48,25 @@ function uploadFile(files) {
             body: formData,
         };
         console.log(fetchOptions);
+        document.querySelector(".loading").classList.remove("hidden");
 
         // Send the POST request
-        fetch(apiUrl, fetchOptions)
-        .then((response) => {
-            if (response.ok) {
-                window.location.href = response.text();
-            } else {
-                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        async function fetchDataAndRedirect(apiUrl, fetchOptions) {
+            try {
+                const response = await fetch(apiUrl, fetchOptions);
+
+                if (response.ok) {
+                    const text = await response.text();
+                    window.location.href = text;
+                } else {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        })
-        .then((data) => {
-            console.log('File successfully uploaded:', data);
-        })
-        .catch((error) => {
-            console.error('An error occurred:', error.message);
-        });
+        }
+
+        fetchDataAndRedirect(apiUrl, fetchOptions);
 
     } else {
         alert("Please drop a single PDF file.");
@@ -75,7 +78,7 @@ function handleDrop(e) {
     const files = dt.files;
 
     uploadFile(files)
-    
+
 }
 
 const selectFileText = document.getElementById("drop-area");
@@ -95,24 +98,23 @@ fileInput.addEventListener("change", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const questions = document.querySelectorAll(".header-question");
     let currentQuestionIndex = 0;
-  
+
     // Function to fade out the current question and fade in the next question
     function fadeNextQuestion() {
-      const currentQuestion = questions[currentQuestionIndex];
-      currentQuestion.style.opacity = 0; // Fade out
-  
-      currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
-  
-      const nextQuestion = questions[currentQuestionIndex];
-      nextQuestion.style.opacity = 1; // Fade in
-  
-      setTimeout(fadeNextQuestion, 4000); // Switch questions every 4 seconds
+        const currentQuestion = questions[currentQuestionIndex];
+        currentQuestion.style.opacity = 0; // Fade out
+
+        currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+
+        const nextQuestion = questions[currentQuestionIndex];
+        nextQuestion.style.opacity = 1; // Fade in
+
+        setTimeout(fadeNextQuestion, 4000); // Switch questions every 4 seconds
     }
-  
+
     // Initial setup to display the first question
     questions[currentQuestionIndex].style.opacity = 1;
-  
+
     // Start the rotation of questions
     setTimeout(fadeNextQuestion, 4000); // Start after 4 seconds
-  });
-  
+});
