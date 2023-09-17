@@ -80,6 +80,21 @@ def analyze_contract():
     return response
 
 
+@app.route("/compare/<id_>", methods=["GET"])
+def compare_card():
+    model_cards = ["td-cash-back-visa-infinite", "cibc-aventura-visa-infinite-privilege",
+        "rbc-visa-classic-low-rate", "cibc-dividend-visa", "TD-Regular-CreditCard"]
+    
+    if id_ not in model_cards:
+        ids_to_compare = [id_] + model_cards[:4]
+    else:
+        ids_to_compare = [id_] + list(set(model_cards).remove(id_))
+    
+    response = make_response(f"http://www.creditdaddy.tech/compare.html?cards={','.join(ids)}", 200)
+    response.mimetype = "text/plain"
+    return response
+    
+
 @app.route("/recommend", methods=["GET"])
 def recommend_cards(
     foreign_overcharge: float = 0,
