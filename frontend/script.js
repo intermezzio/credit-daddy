@@ -58,3 +58,28 @@ fileInput.addEventListener("change", function () {
         selectFileText.querySelector(".text-wrapper-4").textContent = fileName;
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const questions = document.querySelectorAll(".header-question");
+    let currentQuestionIndex = 0;
+  
+    // Function to fade out the current question and fade in the next question
+    function fadeNextQuestion() {
+      const currentQuestion = questions[currentQuestionIndex];
+      currentQuestion.style.opacity = 0; // Fade out
+  
+      currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+  
+      const nextQuestion = questions[currentQuestionIndex];
+      nextQuestion.style.opacity = 1; // Fade in
+  
+      setTimeout(fadeNextQuestion, 4000); // Switch questions every 4 seconds
+    }
+  
+    // Initial setup to display the first question
+    questions[currentQuestionIndex].style.opacity = 1;
+  
+    // Start the rotation of questions
+    setTimeout(fadeNextQuestion, 4000); // Start after 4 seconds
+  });
+  

@@ -1,5 +1,6 @@
 .bg-vector {
   position: absolute;
+  display: none;
 }
 
 #bg1 {
@@ -19,6 +20,7 @@
   top: 0;
   left: 0;
   opacity: 0.5;
+  display: none;
 }
 
 .frame {
@@ -27,7 +29,13 @@
   justify-content: center;
   gap: 41px;
   padding: 100px 120px;
-  position: relative;
+  position: fixed;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.floating-scroll-info > *{
+  cursor: pointer;
 }
 
 .frame .div {
@@ -247,6 +255,7 @@
   border: none;
   outline: none;
 }
+
 .secondary {
   display: flex;
   padding: 0.75rem 1.25rem;
@@ -260,23 +269,59 @@
   outline: none;
 }
 
-table, tbody, tr, td{
-  border: 2px solid #064D49;
+table,
+tbody,
+tr,
+td {
   border-collapse: collapse;
 }
 
-table{
+table {
   width: 100%;
-  max-width: 600px;
+  max-width: 405px;
 }
 
-td{
+td {
   padding: 12px;
+  border: 1px solid #064D49;
+  border-left: 2px solid #064D49;
+  border-right: 2px solid #064D49;
+  border-collapse: collapse;
 }
 
-.row-title{
+.row-title {
   background-color: #FFF3DC;
   font-weight: bold;
   font-family: "Lora";
   font-size: 20px;
+}
+
+.chat-window{
+  margin-left: 645px;
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-card-template {
+  background-color: #FFF3DC;
+  box-shadow: 4px 4px 26px 0px rgba(200, 200, 200, 0.50);
+}
+
+.credit-card-template{
+  perspective: 1000px; /* Define the perspective for 3D */
+  transform-style: preserve-3d; /* Preserve 3D transformations */
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition */
+}
+
+.hovered {
+  transform: rotateX(-10deg) rotateY(10deg); /* Apply 3D rotation when hovered */
+}
+
+.page-content-wrapper{
+  width: 100%;
+  display: flex;
 }

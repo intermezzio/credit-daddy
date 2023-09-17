@@ -1,6 +1,11 @@
+html {
+    scroll-behavior: smooth !important;
+}
+
 .main-chat {
     height: 100vh;
     padding: 120px;
+    position: relative;
 }
 
 .main-chat {
@@ -9,6 +14,16 @@
     align-items: center;
     gap: 41px;
     min-height: 100vh;
+}
+
+.floating-scroll-info {
+    position: absolute;
+    display: flex;
+    background-color: #ffdd9f;
+    padding: 12px 20px;
+    gap: 12px;
+    border-radius: 8px;
+    bottom: 41px;
 }
 
 .query-input {
@@ -65,7 +80,7 @@
     /* 1.4375rem */
 }
 
-.faq{
+.faq {
     display: flex;
     flex-direction: column;
     align-items: center;
