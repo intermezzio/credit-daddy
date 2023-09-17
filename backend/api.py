@@ -75,9 +75,7 @@ def analyze_contract():
     id_ = db_connect.upload_card(**card_details)
 
     # return new id
-    response = make_response(id_, 200)
-    response.mimetype = "text/plain"
-    return response
+    return redirect(f"http://www.creditdaddy.tech/TLDR.html?card={id_}", code=302)
 
 
 
