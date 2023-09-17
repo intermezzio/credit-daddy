@@ -92,7 +92,7 @@ def compare_card(id_):
         other_model_cards.remove(id_)
         ids = [id_] + list(other_model_cards)
     
-    response = make_response(f"http://www.creditdaddy.tech/compare.html?card={','.join(ids)}", 200)
+    response = make_response(f"http://www.creditdaddy.tech/card-compare.html?card={','.join(ids)}", 200)
     response.mimetype = "text/plain"
     return response
     
