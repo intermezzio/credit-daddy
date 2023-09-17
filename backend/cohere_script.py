@@ -15,7 +15,7 @@ url = "https://api.cohere.ai/v1/chat"
 
 def float_def(s: str, default: float) -> float:
     try:
-        return float(s)
+        return float(s.strip("%"))
     except:
         return default
 
