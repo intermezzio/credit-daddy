@@ -82,3 +82,40 @@ async function fetchData() {
 
 // Call the function to fetch and log the data
 fetchData();
+
+document.querySelector("#submit-query").addEventListener("onclick", questionAsked());
+
+function questionAsked() {
+    let questionText = document.querySelector("#chat-query").value;
+    let answerText;
+    if (questionText == "") {
+        return;
+    }
+    let answerPlace = "http://api.creditdaddy.tech/ask/" + cardId + "/" + encodeURIComponent(questionText);
+    async function fetchAnswerData() {
+        try {
+            const response = await fetch(answerPlace);
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response;
+            answerText = data;
+
+            // You can now work with the 'data' object containing the fetched data
+            console.log(data);
+
+            document.querySelector("#question").innerText = questionText;
+            document.querySelector("#answer").innerText = answerText;
+        } catch (error) {
+            console.error("There was a problem fetching the data:", error, answerPlace);
+        }
+
+
+    }
+
+    // Call the function to fetch the data
+    fetchAnswerData();
+
+}
