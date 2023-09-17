@@ -94,7 +94,7 @@ fetchData();
 function questionAsked() {
     document.querySelector(".lds-ring").classList.remove("hidden");
     let rawQuestionText = document.querySelector("#chat-query").value;
-    let questionText = rawQuestionText + "More information: "+JSON.stringify(cardData);
+    let questionText = rawQuestionText + "More information: " + JSON.stringify(cardData) + "Use your judgement and general knowledge";
     let answerText;
     if (questionText == "") {
         return;
@@ -155,10 +155,18 @@ async function fetchLast3Objects() {
             const questionBox = document.createElement("div");
             questionBox.classList.add("question-box");
 
+            let questionString = item.question;
+            const moreInfoIndex = questionString.indexOf('More information:');
+
+            if (moreInfoIndex !== -1) {
+                // Extract the question part (text before 'More information:')
+                questionString = questionString.substring(0, moreInfoIndex);
+            }
+
             // Create the question element and set its text
             const questionElement = document.createElement("div");
             questionElement.classList.add("question");
-            questionElement.textContent = item.question;
+            questionElement.textContent = questionString;
 
             // Create the answer element and set its text
             const answerElement = document.createElement("div");
