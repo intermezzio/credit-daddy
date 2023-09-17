@@ -76,10 +76,8 @@ def upload_card(
         "contract": contract,
     }
 
-    if get_card(id_):
-        raise ValueError("We already have this card")
-
-    db.collection("cards").add(row_data)
+    if not get_card(id_):
+        db.collection("cards").add(row_data)
 
     return id_
 
