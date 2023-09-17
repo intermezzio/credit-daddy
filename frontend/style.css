@@ -52,10 +52,9 @@ body {
     justify-content: center;
     gap: 2.5rem;
     align-self: stretch;
-    color: #064D49;
 }
 
-.nav-items > a{
+.nav-items>a {
     color: #064D49;
     font-family: "Sora", sans-serif;
     font-size: 1.125rem;
