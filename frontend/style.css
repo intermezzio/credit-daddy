@@ -122,7 +122,7 @@ footer {
     z-index: 1;
 }
 
-#credit-card-template-bg-1{
+#credit-card-template-bg-1, .credit-card-template-bg-1{
     top: -70%;
     left: -50%;
     filter: blur(50px);
@@ -131,12 +131,18 @@ footer {
 #credit-card-template-bg-1 > g > path{
     fill: #1A71BC;
 }
+.credit-card-template-bg-1 > g > path{
+    fill: #1A71BC;
+}
 
 #credit-card-template-bg-2 > g > path{
     fill: #2CCAED;
 }
+.credit-card-template-bg-2 > g > path{
+    fill: #2CCAED;
+}
 
-#credit-card-template-bg-2{
+#credit-card-template-bg-2, .credit-card-template-bg-2{
     bottom: -70%;
     right: -50%;
     filter: blur(50px);

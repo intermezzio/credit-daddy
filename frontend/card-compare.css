@@ -49,11 +49,8 @@
   }
   
 
-.table-header > td{
-    padding-right: 41px;
-}
-
 .table table tr td{
+    padding-right: 41px;
     padding-bottom: 41px;
 }
 
@@ -83,5 +80,5 @@ padding-right: 26px;
 }
 
 tbody td{
-    font-size: 20px;
+    font-size: 18px;
 }

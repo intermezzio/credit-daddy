@@ -35,7 +35,7 @@ if (queryString) {
     }
 }
 
-
+let cardData;
 async function fetchData() {
     try {
         const response = await fetch('http://api.creditdaddy.tech/card/' + cardId);
@@ -45,7 +45,7 @@ async function fetchData() {
         }
 
         const data = await response.json();
-
+        cardData = data;
         // Intro Offer Details
         let introOfferDetails;
         if (data["intro-offer-details"] !== "") {
@@ -63,7 +63,7 @@ async function fetchData() {
             cardColours = ["#FF0000", "#ff88a3"];
         }
         else if (data["company-name"] === "The Toronto-Dominion Bank") {
-            cardColours = ["#4CF30A", "#FFFFFF"];
+            cardColours = ["#4CF30A", "#58bf76"];
         }
         else {
             cardColours = ["#16BF82", "#2CCAED"];
@@ -77,6 +77,7 @@ async function fetchData() {
         document.querySelector("#name").innerText = data["name"];
         document.querySelector("#avg-apr").innerText = data["avg-apr"].toString() + "%";
         document.querySelector("#cashback").innerText = "Between " + data["min-cashback"].toString() + "%" + " and " + data["max-cashback"].toString() + "%";
+        document.querySelector("#foreign-fee").innerText = data["foreign-fee"].toString() + "%";
         document.querySelector("#intro-offer-details").innerText = introOfferDetails;
         document.querySelector("#annual-fee").innerText += data["annual-fee"];
         document.querySelector("#overcharge-fee").innerText += data["overcharge-fee"];
@@ -92,7 +93,8 @@ fetchData();
 
 function questionAsked() {
     document.querySelector(".lds-ring").classList.remove("hidden");
-    let questionText = document.querySelector("#chat-query").value;
+    let rawQuestionText = document.querySelector("#chat-query").value;
+    let questionText = rawQuestionText + "More information: "+JSON.stringify(cardData);
     let answerText;
     if (questionText == "") {
         return;
@@ -113,7 +115,7 @@ function questionAsked() {
             console.log(data);
 
             document.getElementById("liveQuestionBox").classList.add("show");
-            document.querySelector("#question").innerText = questionText;
+            document.querySelector("#question").innerText = rawQuestionText;
             document.querySelector("#answer").innerText = answerText;
         } catch (error) {
             console.error("There was a problem fetching the data:", error, answerPlace);
