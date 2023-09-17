@@ -13,12 +13,18 @@ co = cohere.Client(os.environ.get("COHERE_API_KEY"))
 
 url = "https://api.cohere.ai/v1/chat"
 
+def float_def(s: str, default: float) -> float:
+    try:
+        return float(s)
+    except:
+        return default
+
 def extract_card_details(input_contract: str):
 
-    message_1 = "Please list out the Company Name (TD, Royal Bank of Canada, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
-            "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float percentage), and finally Overcharge fee (float percentage)." \
+    message_1 = "Please list out the Company Name (TD, Royal Bank of Canada, etc), Card Name (CIBC Dividend Card, RBC Ion Plus Visa, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
+            "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float), and finally Overcharge fee (float percentage)." \
             "Only describe one card list in a single level JSON format. If you don't have data just put N/A for strings and a '-1' for floats. " \
-            "The output should look like EXAMPLE: { Bank Name: , Card Type: , Avg Apr: , Min Cashback: , Max Cashback: , Foreign Transaction Fee: , Sign Up Offer: , Annual Fee: , Overcharge Fee: } in valid JSON."
+            "The output should look like EXAMPLE: { Bank Name: , Card Name: , Card Type: , Avg Apr: , Min Cashback: , Max Cashback: , Foreign Transaction Fee: , Sign up Offer: , Annual Fee: , Overcharge Fee: } in valid JSON."
     response_1 = co.chat(
         message=message_1,
         # documents has title of document and snippet of text
@@ -46,17 +52,26 @@ def extract_card_details(input_contract: str):
         .strip()
     )
 
-    # convert to json
-    bot_answer_json_1 = ic(json.loads(bot_answer_text_1))
+    # convert to dict
+    bot_answer_json = ic(json.loads(bot_answer_text_1))
 
-    # add text to json
-    # bot_answer_json_1["text"] = input_contract
-    bot_answer_json_1["text"] = "input_contract"
+    row_entry = {
+        "name": bot_answer_json["Card Name"],
+        "card_type": bot_answer_json["Card Type"],
+        "avg_apr": float_def(bot_answer_json["Avg Apr"], float('nan')),
+        "min_cashback": float_def(bot_answer_json["Min Cashback"], 0),
+        "max_cashback": float_def(bot_answer_json["Max Cashback"], 0),
+        "foreign_fee": float_def(bot_answer_json["Foreign Transaction Fee"], 0),
+        "intro_offer_details": bot_answer_json["Sign up Offer"],
+        "company_name": bot_answer_json["Bank Name"],
+        "annual_fee": float_def(bot_answer_json["Annual Fee"], 0),
+        "overcharge_fee": float_def(bot_answer_json["Overcharge Fee"], float('nan')),
+        "contract": input_contract,
+    }
 
-    print(bot_answer_json_1)
+    ic(row_entry)
 
-    if True:
-        return bot_answer_json_1
+    return row_entry
 
 def ask_more_card_details(input_contract: str, question: str):
     response = co.chat(
@@ -67,7 +82,7 @@ def ask_more_card_details(input_contract: str, question: str):
         ],
         prompt_truncation="AUTO",
     )
-    return response.summary
+    return response.text
 
 
 

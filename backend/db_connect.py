@@ -55,9 +55,7 @@ def upload_card(
     min_cashback: float,
     max_cashback: float,
     foreign_fee: float,
-    intro_offer: bool,
     intro_offer_details: str,
-    description: str,
     annual_fee: float,
     overcharge_fee: float,
     contract: str = ""
@@ -72,11 +70,10 @@ def upload_card(
         "min-cashback": min_cashback,
         "max-cashback": max_cashback,
         "foreign-fee": foreign_fee,
-        "intro-offer": intro_offer,
         "intro-offer-details": intro_offer_details,
-        "description": description,
         "annual-fee": annual_fee,
         "overcharge-fee": overcharge_fee,
+        "contract": contract,
     }
 
     if get_card(id_):
