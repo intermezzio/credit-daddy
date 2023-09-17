@@ -1,6 +1,7 @@
 # from http.server import HTTPServer, BaseHTTPRequestHandler
 # from urllib.parse import parse_qs
 import json
+import os
 import sys
 
 from flask import Flask, redirect, url_for, request
@@ -19,24 +20,24 @@ ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-# CORS(app)
+CORS(app)
 
-@app.route("/card/<id_>")
-def get_card(id_, methods=["GET"]):
+@app.route("/card/<id_>", methods=["GET"])
+def get_card(id_):
     # get card info
     card_info = db_connect.get_card(id_)
     return card_info
 
 
-@app.route("/chats/<id_>")
-def get_chats(id_, methods=["GET"]):
+@app.route("/chats/<id_>", methods=["GET"])
+def get_chats(id_):
     # get chats
     chats = db_connect.get_chats(id_)
     return chats
 
 
-@app.route("/ask/<id_>/<question>")
-def get_answer(id_, question, methods=["GET"]):
+@app.route("/ask/<id_>/<question>", methods=["GET"])
+def get_answer(id_, question):
     contract = db_connect.get_contract(id_)
     answer = cohere_script.ask_more_card_details(id_, question)
 
@@ -44,18 +45,17 @@ def get_answer(id_, question, methods=["GET"]):
     return answer
 
 
-@app.route("/upload-card")
-# @cross_origin()
-def analyze_contract(methods=["GET", "POST"]):
-    ic(request.form)
+@app.route("/upload-card", methods=["POST"])
+def analyze_contract():
+    ic(request)
     ic(request.files)
-    ic(request.filename)
-    sys.stdout.flush()
+    ic(request.files["file"])
     name = request.form["name"]
-    if "file" not in request.files or request.filename == "":
+    if "file" not in request.files:
         pass
 
-    if request.filename.rsplit(".", 1)[1].lower() not in ALLOWED_EXTENSIONS:
+    file = request.files["file"]
+    if file.filename.rsplit(".", 1)[1].lower() not in ALLOWED_EXTENSIONS:
         pass
 
     # see if we already have it

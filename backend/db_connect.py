@@ -60,6 +60,7 @@ def upload_card(
     description: str,
     annual_fee: float,
     overcharge_fee: float,
+    contract: str = ""
 ):
     id_ = name_to_id(name)
     row_data = {
