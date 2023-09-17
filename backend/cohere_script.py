@@ -57,15 +57,15 @@ def extract_card_details(input_contract: str):
 
     row_entry = {
         "name": bot_answer_json["Card Name"],
-        "card_type": bot_answer_json["Card Type"],
-        "avg_apr": float_def(bot_answer_json["Avg Apr"], float('nan')),
-        "min_cashback": float_def(bot_answer_json["Min Cashback"], 0),
-        "max_cashback": float_def(bot_answer_json["Max Cashback"], 0),
-        "foreign_fee": float_def(bot_answer_json["Foreign Transaction Fee"], 0),
-        "intro_offer": bot_answer_json["Sign Up Offer"],
-        "bank_name": bot_answer_json["Bank Name"],
-        "annual_fee": float_def(bot_answer_json["Annual Fee"], 0),
-        "overcharge_fee": float_def(bot_answer_json["Overcharge Fee"], float('nan')),
+        "card-type": bot_answer_json["Card Type"],
+        "avg-apr": float_def(bot_answer_json["Avg Apr"], float('nan')),
+        "min-cashback": float_def(bot_answer_json["Min Cashback"], 0),
+        "max-cashback": float_def(bot_answer_json["Max Cashback"], 0),
+        "foreign-fee": float_def(bot_answer_json["Foreign Transaction Fee"], 0),
+        "intro-offer": bot_answer_json["Sign Up Offer"],
+        "bank-name": bot_answer_json["Bank Name"],
+        "annual-fee": float_def(bot_answer_json["Annual Fee"], 0),
+        "overcharge-fee": float_def(bot_answer_json["Overcharge Fee"], float('nan')),
         "contract": input_contract,
     }
 

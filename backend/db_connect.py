@@ -73,6 +73,7 @@ def upload_card(
         "intro-offer-details": intro_offer_details,
         "annual-fee": annual_fee,
         "overcharge-fee": overcharge_fee,
+        "contract": contract,
     }
 
     if get_card(id_):
