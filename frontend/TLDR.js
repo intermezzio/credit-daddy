@@ -180,3 +180,30 @@ async function fetchLast3Objects() {
 
 // Call the function to fetch the last 5 objects
 fetchLast3Objects();
+
+function compare() {
+    let url = "http://api.creditdaddy.tech/compare/" + cardId;
+    
+    async function fetchAnswerData() {
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const redirectHere = await response.text();
+            window.location.href = redirectHere;
+            
+        } catch (error) {
+            console.error("There was a problem fetching the data:", error, url);
+        }
+        document.querySelector(".lds-ring").classList.add("hidden");
+
+
+    }
+
+    // Call the function to fetch the data
+    fetchAnswerData();
+
+}
