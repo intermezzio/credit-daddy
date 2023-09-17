@@ -1,10 +1,11 @@
 # from http.server import HTTPServer, BaseHTTPRequestHandler
 # from urllib.parse import parse_qs
 import json
+import sys
 
-from icecream import ic
 from flask import Flask, redirect, url_for, request
 from flask_cors import CORS, cross_origin
+from icecream import ic
 
 from werkzeug.utils import secure_filename
 
@@ -49,6 +50,7 @@ def analyze_contract(methods=["GET", "POST"]):
     ic(request.form)
     ic(request.files)
     ic(request.filename)
+    sys.stdout.flush()
     name = request.form["name"]
     if "file" not in request.files or request.filename == "":
         pass
