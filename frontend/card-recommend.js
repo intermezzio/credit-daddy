@@ -1,3 +1,7 @@
+submit_btn = document.getElementById("submit");
+
+submit_btn.addEventListener("onclick", recommend);
+
 function recommend() {
     let sliders = document.querySelectorAll(".slidecontainer input.slider");
     let url = "http://api.creditdaddy.tech/recommend?foreign_overcharge="
