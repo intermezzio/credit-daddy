@@ -86,11 +86,11 @@ def compare_card(id_):
         "rbc-visa-classic-low-rate", "cibc-dividend-visa", "TD-Regular-CreditCard"]
     
     if id_ not in model_cards:
-        ids_to_compare = [id_] + model_cards[:4]
+        ids = [id_] + model_cards[:4]
     else:
         other_model_cards = set(model_cards)
         other_model_cards.remove(id_)
-        ids_to_compare = [id_] + list(other_model_cards)
+        ids = [id_] + list(other_model_cards)
     
     response = make_response(f"http://www.creditdaddy.tech/compare.html?card={','.join(ids)}", 200)
     response.mimetype = "text/plain"
