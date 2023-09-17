@@ -75,7 +75,7 @@ def analyze_contract():
     id_ = db_connect.upload_card(**card_details)
 
     # return new id
-    response = make_response(f"http://www.creditdaddy.tech/TLDR.html?card={id_}", 200)
+    response = make_response(f"http://www.creditdaddy.tech/tldr.html?card={id_}", 200)
     response.mimetype = "text/plain"
     return response
 
@@ -106,7 +106,7 @@ def recommend_cards(
 
     if n == 1:
         # return new id
-        response = make_response(f"http://www.creditdaddy.tech/TLDR.html?card={ids[0]}", 200)
+        response = make_response(f"http://www.creditdaddy.tech/tldr.html?card={ids[0]}", 200)
         response.mimetype = "text/plain"
         return response
     else:
