@@ -34,13 +34,13 @@ for (let i = 0; i < cardArray.length; i++) {
 
             // Card Color
             let cardColours;
-            if (data["company-name"] === "Royal Bank of Canada") {
+            if (data["company-name"] === "Royal Bank of Canada" || data["company-name"] === "RBC") {
                 cardColours = ["#0088ff", "#FFF814"];
             }
-            else if (data["company-name"] === "Canadian Imperial Bank of Commerce") {
+            else if (data["company-name"] === "Canadian Imperial Bank of Commerce" || data["company-name"] === "CIBC") {
                 cardColours = ["#FF0000", "#ff88a3"];
             }
-            else if (data["company-name"] === "The Toronto-Dominion Bank") {
+            else if (data["company-name"] === "The Toronto-Dominion Bank" || data["company-name"] === "TD") {
                 cardColours = ["#4CF30A", "#58bf76"];
             }
             else {
