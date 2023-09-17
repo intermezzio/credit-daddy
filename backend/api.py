@@ -72,7 +72,10 @@ def analyze_contract():
     id_ = db_connect.upload_card(**card_details)
 
     # return new id
-    return id_
+    response = make_response(id_, 200)
+    response.mimetype = "text/plain"
+    return response
+
 
 
 @app.route("/recommend", methods=["GET"])
