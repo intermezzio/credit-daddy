@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Daddy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Sora:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="card-recommend.css">
+  <script src="card-recommend.js" defer></script>
+  <link rel="shortcut icon" href="./Images/Favicon.svg" type="image/x-icon">
+
+</head>
+<body>
+      <!-- Navbar -->
+  <nav class="nav dark">
+    <img src="./Images/Logo-light.svg" alt="Credit Daddy Logo">
+    <div class="nav-items">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="./card-compare.html">Compare</a>
+      <a href="./card-recommend.html">Recommend</a>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+    <h2 class="section-title">Prioritize Your Benefits</h2>
+    <section class="sliders">
+        <div class="slidecontainer">
+            <p>Low Foreign Fee</p>
+            <input type="range" min="0" max="1" value="0.5" step="0.1" class="slider" id="myRange">
+            <p style="text-align: right;">Low Overcharge Fees</p>
+          </div>
+        <div class="slidecontainer">
+            <p>Low APR</p>
+            <input type="range" min="0" max="1" value="0.5" step="0.1" class="slider" id="myRange">
+            <p style="text-align: right;">Low Annual Fee</p>
+          </div>
+        <div class="slidecontainer">
+            <p>High Selective Cashback</p>
+            <input type="range" min="0" max="1" value="0.5" step="0.1" class="slider" id="myRange">
+            <p style="text-align: right;">General Cashback</p>
+          </div>
+    </section>
+    <button class="secondary" onclick="window.location.href='./card-recommend-2.html'">Recommend a Card</button>
+</main>
+
+</body>
+</html>
