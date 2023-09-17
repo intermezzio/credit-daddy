@@ -52,9 +52,9 @@ function uploadFile(files) {
         fetch(apiUrl, fetchOptions)
         .then((response) => {
             if (response.ok) {
-            return response.text();
+                window.location.href = response.text();
             } else {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
         })
         .then((data) => {

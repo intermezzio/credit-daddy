@@ -79,7 +79,7 @@ def validate_comment(answer: str) -> bool:
     if "i don't know" in l_ans:
         return False
     if "sorry" in l_ans or "unfortunately" in l_ans:
-        return False    
+        return False
 
     return True
 
