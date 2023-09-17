@@ -19,7 +19,7 @@ ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-CORS(app)
+# CORS(app)
 
 @app.route("/card/<id_>")
 def get_card(id_, methods=["GET"]):
@@ -45,7 +45,7 @@ def get_answer(id_, question, methods=["GET"]):
 
 
 @app.route("/upload-card")
-@cross_origin()
+# @cross_origin()
 def analyze_contract(methods=["GET", "POST"]):
     ic(request.form)
     ic(request.files)
@@ -85,7 +85,7 @@ def analyze_contract(methods=["GET", "POST"]):
 
 
 @app.route("/recommend", methods=["GET"])
-def recommend_cardsget_optimal(
+def recommend_cards(
     foreign_overcharge: float = 0,
     apr_intro_offer: float = 0,
     annual_fee_cashback: float = 0,
