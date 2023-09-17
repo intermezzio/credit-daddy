@@ -35,6 +35,8 @@ if (queryString) {
     }
 }
 
+console.log(cardId);
+
 let cardData;
 async function fetchData() {
     try {
