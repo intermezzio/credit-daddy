@@ -21,8 +21,6 @@ def float_def(s: str, default: float) -> float:
         return default
 
 def extract_card_details(input_contract: str):
-    input_contract = unicodedata.normalize('NFKD', input_contract).encode('ascii','ignore')
-
     message_1 = "Please list out the Company Name (TD, Royal Bank of Canada, etc), Card Name (CIBC Dividend Card, RBC Ion Plus Visa, etc), Card Type (card_type) [ie Visa, Mastercard] (str), Avg APR (avg_apr) (float) - use first APR seen, " \
             "Minimum Cashback (float percentage), Foreign Transaction Fee (float percentage), Sign up Offer (float percentage), Annual Fee (float), and finally Overcharge fee (float percentage)." \
             "Only describe one card list in a single level JSON format. If you don't have data just put N/A for strings and a '-1' for floats. " \
