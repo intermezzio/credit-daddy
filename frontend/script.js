@@ -33,11 +33,9 @@ function unhighlight() {
     dropArea.classList.remove('highlight');
 }
 
-function handleDrop(e) {
+function uploadFile(files) {
     const apiUrl = 'http://api.creditdaddy.tech/upload-card';
-    const dt = e.dataTransfer;
-    const files = dt.files;
-
+    
     if (files.length === 1 && files[0].type === 'application/pdf') {
         // If a single PDF file is dropped, set it as the input value
         fileInput.files = files;
@@ -73,6 +71,14 @@ function handleDrop(e) {
     }
 }
 
+function handleDrop(e) {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+
+    uploadFile(files)
+    
+}
+
 const selectFileText = document.getElementById("drop-area");
 
 selectFileText.addEventListener("click", function () {
@@ -82,10 +88,10 @@ selectFileText.addEventListener("click", function () {
 // Listen for file selection and update the text
 fileInput.addEventListener("change", function () {
     if (fileInput.files.length > 0) {
-        const fileName = fileInput.files[0].name;
-        selectFileText.querySelector(".text-wrapper-4").textContent = fileName;
+        uploadFile(fileInput.files);
     }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const questions = document.querySelectorAll(".header-question");

@@ -82,8 +82,8 @@ def analyze_contract():
 @app.route("/recommend", methods=["GET"])
 def recommend_cards(
     foreign_overcharge: float = 0,
-    apr_intro_offer: float = 0,
-    annual_fee_cashback: float = 0,
+    apr_intro_offer: float = 0, # apr_annual
+    annual_fee_cashback: float = 0, # selective_general cashback
     n: int = 3,
 ):
     ids = db_connect.get_optimal(foreign_overcharge, apr_intro_offer, annual_fee_cashback)
