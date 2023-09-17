@@ -55,8 +55,8 @@
                         </g>
                     </svg>
                     <div class="credit-card-header">
-                        <span class="credit-card-company">Royal Bank of Canada</span>
-                        <span class="credit-card-name">Student’s First Credit Card</span>
+                        <span class="credit-card-company" id="company-name"></span>
+                        <span class="credit-card-name" id="name"></span>
                     </div>
                     <div class="credit-card-middle-images">
                         <img src="./Images/credit-card-template-chip.png">
@@ -94,11 +94,11 @@
                     <tbody>
                         <tr>
                             <td class="row-title" title="Average APR, or Annual Percentage Rate, is the cost you have to pay for borrowing money on a credit card, like an interest fee, usually expressed as a percentage of the amount you owe.">Average APR</td>
-                            <td>15%</td>
+                            <td id="avg-apr"></td>
                         </tr>
                         <tr>
                             <td class="row-title" title="Annual cashback is like getting a small portion of the money you spent on your credit card purchases back as a gift once a year.">Cashback Percentage</td>
-                            <td>Between 1% - 5%</td>
+                            <td id="cashback"></td>
                         </tr>
                         <tr>
                             <td class="row-title" title="A foreign transaction fee is like a small extra charge that you might have to pay when you use your credit card to buy things in a different country.">Foreign Transaction Fee</td>
@@ -106,16 +106,15 @@
                         </tr>
                         <tr>
                             <td class="row-title" title="A sign-up offer is like a special bonus or reward you can get when you first sign up for something, like a credit card, often given as an incentive for joining.">Sign up Offer</td>
-                            <td>50$ cash bonus after spending 500$ on purchases in the first 3 months from account
-                                opening</td>
+                            <td id="intro-offer-details"></td>
                         </tr>
                         <tr>
                             <td class="row-title" title="An annual fee is like a yearly membership fee you pay to the credit card company for the privilege of using their card, and it can vary in cost depending on the card you choose.">Annual Fee</td>
-                            <td>$0</td>
+                            <td id="annual-fee">$</td>
                         </tr>
                         <tr>
                             <td class="row-title" title="An overcharge fee is a penalty you might have to pay if you spend more money with your credit card than your credit limit allows.">Overcharge Fee</td>
-                            <td>$0</td>
+                            <td id="overcharge-fee">$</td>
                         </tr>
                     </tbody>
                 </table>

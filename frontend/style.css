@@ -129,17 +129,17 @@ footer {
 }
 
 #credit-card-template-bg-1 > g > path{
-    fill: #16BF82;
+    fill: #1A71BC;
+}
+
+#credit-card-template-bg-2 > g > path{
+    fill: #2CCAED;
 }
 
 #credit-card-template-bg-2{
     bottom: -70%;
     right: -50%;
     filter: blur(50px);
-}
-
-#credit-card-template-bg-2 > g > path{
-    fill: #2CCAED;
 }
 
 #credit-card-template-bg-noise{
