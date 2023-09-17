@@ -80,7 +80,6 @@ def analyze_contract():
     return response
 
 
-
 @app.route("/recommend", methods=["GET"])
 def recommend_cards(
     foreign_overcharge: float = 0,
@@ -90,7 +89,16 @@ def recommend_cards(
 ):
     ids = db_connect.get_optimal(foreign_overcharge, apr_intro_offer, annual_fee_cashback)
 
-    return ids
+    if n == 1:
+        # return new id
+        response = make_response(f"http://www.creditdaddy.tech/TLDR.html?card={ids[0]}", 200)
+        response.mimetype = "text/plain"
+        return response
+    else:
+        # return new id
+        response = make_response(f"http://www.creditdaddy.tech/compare.html?cards={','.join(ids)}", 200)
+        response.mimetype = "text/plain"
+        return response
 
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
