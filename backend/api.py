@@ -81,7 +81,7 @@ def analyze_contract():
 
 
 @app.route("/compare/<id_>", methods=["GET"])
-def compare_card():
+def compare_card(id_):
     model_cards = ["td-cash-back-visa-infinite", "cibc-aventura-visa-infinite-privilege",
         "rbc-visa-classic-low-rate", "cibc-dividend-visa", "TD-Regular-CreditCard"]
     
