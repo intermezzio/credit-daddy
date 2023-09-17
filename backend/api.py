@@ -111,7 +111,7 @@ def recommend_cards(
         return response
     else:
         # return new id
-        response = make_response(f"http://www.creditdaddy.tech/compare.html?cards={','.join(ids)}", 200)
+        response = make_response(f"http://www.creditdaddy.tech/card-compare.html?cards={','.join(ids)}", 200)
         response.mimetype = "text/plain"
         return response
 
