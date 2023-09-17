@@ -325,3 +325,23 @@ tr {
   width: 100%;
   display: flex;
 }
+
+#liveQuestionBox{
+  opacity: 0;
+  user-select: none;
+}
+
+#liveQuestionBox.show{
+  opacity: 1;
+  user-select: auto;
+}
+
+.button-and-loading{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.lds-ring.hidden{
+  display: none;
+}

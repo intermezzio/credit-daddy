@@ -21,15 +21,20 @@ creditCardContainer.addEventListener("mousemove", (event) => {
     creditCardContainer.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
 });
 
-let cardId = "cibc-aventura-visa-infinite-privilege";
-
-// URL Modification
-let currentUrl = window.location.href; // Get the current URL
-
-if (!currentUrl.includes("?card")) {
-    currentUrl += `?card=${cardId}`;
+let cardId;
+const currentUrl = window.location.href;
+const queryString = currentUrl.split("?")[1]; // Get the part of the URL after the "?"
+if (queryString) {
+    const params = queryString.split("&"); // Split parameters by "&"
+    for (const param of params) {
+        const [key, value] = param.split("=");
+        if (key === "card") {
+            cardId = decodeURIComponent(value); // Decode the value
+            break; // Exit the loop once "card" parameter is found
+        }
+    }
 }
-window.history.pushState({ cardId: cardId }, "", currentUrl);
+
 
 async function fetchData() {
     try {
@@ -83,9 +88,10 @@ async function fetchData() {
 // Call the function to fetch and log the data
 fetchData();
 
-document.querySelector("#submit-query").addEventListener("onclick", questionAsked());
+// document.querySelector("#submit-query").addEventListener("onclick", questionAsked());
 
 function questionAsked() {
+    document.querySelector(".lds-ring").classList.remove("hidden");
     let questionText = document.querySelector("#chat-query").value;
     let answerText;
     if (questionText == "") {
@@ -100,17 +106,19 @@ function questionAsked() {
                 throw new Error("Network response was not ok");
             }
 
-            const data = await response;
+            const data = await response.text();
             answerText = data;
 
             // You can now work with the 'data' object containing the fetched data
             console.log(data);
 
+            document.getElementById("liveQuestionBox").classList.add("show");
             document.querySelector("#question").innerText = questionText;
             document.querySelector("#answer").innerText = answerText;
         } catch (error) {
             console.error("There was a problem fetching the data:", error, answerPlace);
         }
+        document.querySelector(".lds-ring").classList.add("hidden");
 
 
     }
@@ -119,3 +127,54 @@ function questionAsked() {
     fetchAnswerData();
 
 }
+
+async function fetchLast3Objects() {
+    try {
+        // Fetch the JSON data from the API
+        const response = await fetch("http://api.creditdaddy.tech/chats/" + cardId);
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        // Get the last 5 objects from the array
+        const last3Objects = data.slice(-3);
+
+        // Log the last 5 objects to the console
+        console.log("Last 3 Objects:", last3Objects);
+
+        const faqContainer = document.querySelector(".faq");
+
+        // Loop through your JSON data and create question boxes
+        last3Objects.forEach(item => {
+            // Create a new question box
+            const questionBox = document.createElement("div");
+            questionBox.classList.add("question-box");
+
+            // Create the question element and set its text
+            const questionElement = document.createElement("div");
+            questionElement.classList.add("question");
+            questionElement.textContent = item.question;
+
+            // Create the answer element and set its text
+            const answerElement = document.createElement("div");
+            answerElement.classList.add("answer");
+            answerElement.textContent = item.answer;
+
+            // Append the question and answer elements to the question box
+            questionBox.appendChild(questionElement);
+            questionBox.appendChild(answerElement);
+
+            // Append the question box to the FAQ container
+            faqContainer.appendChild(questionBox);
+        });
+
+    } catch (error) {
+        console.error("There was a problem fetching the data:", error);
+    }
+}
+
+// Call the function to fetch the last 5 objects
+fetchLast3Objects();
