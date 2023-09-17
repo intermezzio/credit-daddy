@@ -47,20 +47,11 @@ def get_answer(id_, question):
 
 @app.route("/upload-card", methods=["POST"])
 def analyze_contract():
-    ic(request)
-    ic(request.files)
-    ic(request.files["file"])
-    name = request.form["name"]
     if "file" not in request.files:
         pass
 
     file = request.files["file"]
     if file.filename.rsplit(".", 1)[1].lower() not in ALLOWED_EXTENSIONS:
-        pass
-
-    # see if we already have it
-    id_ = db_connect.name_to_id(name)
-    if db_connect.get_card(id_):
         pass
 
     filename = secure_filename(file.filename)
@@ -78,7 +69,7 @@ def analyze_contract():
     card_details = cohere_script.extract_card_details(contract_text)
 
     # store results in firebase
-    db_connect.upload_card(name=name, contract=contract_text, **card_details)
+    id_ = db_connect.upload_card(**card_details)
 
     # return new id
     return id_
