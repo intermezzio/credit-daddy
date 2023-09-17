@@ -1,0 +1,87 @@
+main {
+    padding: 100px 120px;
+    padding-top: 164px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.slidecontainer {
+    display: flex;
+    padding: 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliders{
+    padding: 41px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+.slidecontainer>p {
+    min-width: 275px;
+    font-family: "Sora";
+    /* font-weight: 700; */
+    font-size: 20px;
+}
+
+.slidecontainer>.slider {
+    width: 100%;
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 8px;
+    /* Specified height */
+    background: #ffdd9f;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 25px;
+    /* Set a specific slider handle width */
+    height: 25px;
+    /* Slider handle height */
+    background: #064D49;
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+    border-radius: 25px;
+}
+
+.secondary {
+    display: flex;
+    padding: 0.75rem 1.25rem;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 8px;
+    border: 2px solid #064D49;
+    background: transparent;
+    font-size: 20px;
+    color: #064D49;
+    outline: none;
+  }
+  
+  .secondary:hover{
+    background-color: #064D49;
+    color: #fff3dc;
+  }
