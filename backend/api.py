@@ -3,7 +3,7 @@
 import json
 
 from flask import Flask, redirect, url_for, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 from werkzeug.utils import secure_filename
 
